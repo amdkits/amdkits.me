@@ -1,0 +1,43 @@
+---
+import "../styles/global.css"
+
+const { title = "amdkits" } = Astro.props;
+const path = Astro.url.pathname;
+
+const links = [
+  { href: "/blog", label: "blog" },
+  { href: "/gpg", label: "gpg" },
+  { href: "/rss", label: "rss" },
+  { href: "/contact", label: "contact" },
+  { href: "/guestbook", label: "guestbook" },
+];
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1 class="logo">amdkits</h1>
+      <nav>
+        <a href="/" class={path === "/" ? "active" : ""}>~</a>
+        {links.map((link, i) => (
+          <a
+            href={link.href}
+            class={path.startsWith(link.href) ? "active" : ""}
+          >
+            {i === links.length - 1 ? "└ " : "├ "}{link.label}
+          </a>
+        ))}
+      </nav>
+    </aside>
+
+    <main class="content">
+      <slot />
+    </main>
+  </div>
+</body>
+</html>
