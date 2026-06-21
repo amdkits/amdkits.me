@@ -1,0 +1,29 @@
+---
+const path = Astro.url.pathname;
+
+const links = [
+  { href: "/blog", label: "blog" },
+  { href: "/gpg", label: "gpg" },
+  { href: "/rss", label: "rss" },
+  { href: "/contact", label: "contact" },
+  { href: "/guestbook", label: "guestbook" },
+];
+---
+
+<aside class="sidebar">
+  <h1 class="logo">amdkits</h1>
+
+  <nav>
+    <a href="/" class={path === "/" ? "active" : ""}>~</a>
+
+    {links.map((link, i) => (
+      <a
+        href={link.href}
+        class={path.startsWith(link.href) ? "active" : ""}
+      >
+        {i === links.length - 1 ? "└ " : "├ "}
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</aside>
