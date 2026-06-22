@@ -1,62 +1,76 @@
-  :root {
-    --bg: #f4f8fb;
-    --sidebar-bg: #e3eef5;
-    --text: #3a4550;
-    --konata-blue: #5ba3c7;
-    --konata-blue-soft: #8fc1dd;
-    --border: #d3e3ed;
-  }
+:root {
+  --bg: #f4f8fb;
+  --sidebar-bg: #e3eef5;
+  --text: #3a4550;
+  --konata-blue: #5ba3c7;
+  --konata-blue-soft: #8fc1dd;
+  --border: #d3e3ed;
+}
 
-  * { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, "Segoe UI", sans-serif;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    min-height: 100vh;
-  }
+.layout {
+  width: 800px;
+  height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  background: var(--bg);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 0 0 0px #1a1a1a,
+    0 0 10px rgba(0,0,0,0.2);
+}
 
-  .sidebar {
-    background: var(--sidebar-bg);
-    border-right: 1px solid var(--border);
-    padding: 2rem 1.5rem;
-  }
+.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+}
 
-  .logo {
-    font-size: 1.1rem;
-    color: var(--konata-blue);
-    margin-bottom: 1.5rem;
-  }
+.logo {
+  font-size: 1.1rem;
+  color: var(--konata-blue);
+  margin-bottom: 1.5rem;
+}
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    font-family: monospace;
-    font-size: 0.95rem;
-  }
+nav {
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
 
-  nav a {
-    color: var(--text);
-    text-decoration: none;
-    padding: 0.35rem 0;
-    white-space: pre;
-  }
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  white-space: pre;
+}
 
-  nav a:hover {
-    color: var(--konata-blue);
-  }
+nav a:hover {
+  color: var(--konata-blue);
+}
 
-  nav a.active {
-    color: var(--konata-blue);
-    font-weight: 600;
-  }
+nav a.active {
+  color: var(--konata-blue);
+  font-weight: 600;
+}
 
-  .content {
-    padding: 3rem;
-  }
+.content {
+  padding: 3rem;
+}
