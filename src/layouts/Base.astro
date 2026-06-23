@@ -1,24 +1,42 @@
 ---
-import "../styles/global.css";
-import Sidebar from "../components/sidebar.astro";
-
+import '../styles/global.css';
 const { title = "amdkits" } = Astro.props;
 ---
-
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>amdkits — {title}</title>
+</head>
+<body>
+  <div class="page">
+    <div class="box">
 
-  <body>
-    <div class="layout">
-      <Sidebar />
-
-      <main class="content">
-        <slot />
-      </main>
+    <div class="hero">
+      <div class="moon">
+        <svg viewBox="0 0 100 100" width="80" height="80">
+          <circle cx="50" cy="50" r="40" fill="var(--konata-blue-soft)" />
+          <circle cx="65" cy="38" r="6" fill="var(--bg)" opacity="0.4" />
+          <circle cx="40" cy="60" r="9" fill="var(--bg)" opacity="0.4" />
+        </svg>
+      </div>
+      <h1 class="wordmark">a m d k i t s</h1>
     </div>
-  </body>
+
+    <div class="window">
+      <div class="titlebar">i seek: signal</div>
+
+      <nav class="navrow">
+        <a href="/">home</a>
+        <a href="../pages/blogs">blog</a>
+        <a href="../pages/projects">projects</a>
+        <a href="https://leetcode.com/u/amdkits/">leetcode</a>
+      </nav>
+
+      <slot />
+    </div>
+    </div>
+
+  </div>
+</body>
 </html>

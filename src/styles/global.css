@@ -1,10 +1,11 @@
 :root {
-  --bg: #f4f8fb;
-  --sidebar-bg: #e3eef5;
-  --text: #3a4550;
+  --bg: #1b2230;
+  --window-bg: #aebcc7;
+  --titlebar-bg: #3c4a5e;
+  --text: #2c3440;
   --konata-blue: #5ba3c7;
   --konata-blue-soft: #8fc1dd;
-  --border: #d3e3ed;
+  --border: #6b7a8c;
 }
 
 * {
@@ -14,63 +15,103 @@
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("../../public/bgidea2.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.layout {
-  width: 800px;
-  height: 560px;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
   background: var(--bg);
-  border-radius: 12px;
+  font-family: "Courier New", monospace;
+}
+
+.page {
+  transform: translate(100px, 200px);
+  width: 500px;
+}
+
+.box {
+  width: 500px;
+}
+
+.hero {
+  padding: 1.5rem 0.5rem;
+}
+
+.wordmark {
+  color: var(--konata-blue-soft);
+  letter-spacing: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0.5rem 0 0;
+}
+
+.window {
+  background: var(--window-bg);
+  border-radius: 4px;
   overflow: hidden;
-  position: relative;
-  box-shadow:
-    0 0 0 0px #1a1a1a,
-    0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.sidebar {
-  background: var(--sidebar-bg);
-  border-right: 1px solid var(--border);
-  padding: 2rem 1.5rem;
+.titlebar {
+  background: var(--titlebar-bg);
+  color: var(--konata-blue-soft);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
 }
 
-.logo {
-  font-size: 1.1rem;
-  color: var(--konata-blue);
-  margin-bottom: 1.5rem;
-}
-
-nav {
+.navrow {
   display: flex;
-  flex-direction: column;
-  font-family: monospace;
-  font-size: 0.95rem;
+  gap: 1.2rem;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--border);
 }
 
-nav a {
+.navrow a {
   color: var(--text);
   text-decoration: none;
-  padding: 0.35rem 0;
-  white-space: pre;
+  font-size: 0.85rem;
 }
 
-nav a:hover {
-  color: var(--konata-blue);
+.navrow a:hover {
+  color: var(--titlebar-bg);
 }
 
-nav a.active {
-  color: var(--konata-blue);
-  font-weight: 600;
-}
-
+.updates,
 .content {
-  padding: 3rem;
+  background: var(--bg);
+  margin: 0.6rem;
+  padding: 0.8rem;
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  color: var(--border);
+  font-size: 0.85rem;
+}
+
+.updates h2,
+.content h2 {
+  color: var(--konata-blue-soft);
+  font-size: 0.85rem;
+  margin: 0 0 0.6rem;
+}
+
+.updates ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.updates li {
+  font-size: 0.8rem;
+  padding: 0.3rem 0;
+}
+
+.updates .date {
+  color: var(--border);
+}
+
+.updates a,
+.content a {
+  color: var(--konata-blue-soft);
+  text-decoration: none;
+}
+
+.updates a:hover,
+.content a:hover {
+  text-decoration: underline;
 }

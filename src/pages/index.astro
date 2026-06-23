@@ -1,18 +1,24 @@
 ---
-import Base from "../layouts/Base.astro";
+import Base from '../layouts/Base.astro';
+
+const updates = [
+  { date: "2026-06-20", tag: "OS", label: "real mode boot sector notes" },
+  { date: "2026-06-10", tag: "LeetCode", label: "graph streak day 110" },
+  { date: "2026-05-28", tag: "Guitar", label: "rasgueo practice log" },
+  { date: "2026-05-15", tag: "Cache", label: "LRU eviction writeup" },
+  { date: "2026-05-02", tag: "German", label: "B1 → B2 notes" },
+];
 ---
-
-<Base title="amdkits">
-  <h1>Under Construction</h1>
-
-  <p>
-    I'm currently rebuilding this site.
-  </p>
-
-  <ul>
-    <li>[ ] Blog</li>
-    <li>[ ] Guestbook</li>
-    <li>[ ] GPG page</li>
-    <li>[ ] RSS feed</li>
-  </ul>
+<Base title="home">
+  <div class="updates">
+    <h2>updates</h2>
+    <ul>
+      {updates.map((u) => (
+        <li>
+          <span class="date">{u.date}</span> ·
+          <a href="#">[{u.tag}] {u.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </Base>
