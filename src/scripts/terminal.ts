@@ -8,6 +8,7 @@ const term = new Terminal({
   fontSize: 15,
 
   cursorBlink: true,
+  cursorStyle: "block",
   allowTransparency: true,
 
   theme: {

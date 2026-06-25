@@ -4,7 +4,7 @@
   left: 650px;
   right: 100px;
   width: 520px;
-  height: 420px;
+  height: 520px;
   padding: 12px;
   background: rgba(0, 0, 0, 0);
   border-radius: 8px;
@@ -23,6 +23,6 @@
   overflow: hidden !important;
 }
 
-.xterm-cursor {
-  background: #c4746e !important;
+theme: {
+  cursor: '#c4746e'
 }
