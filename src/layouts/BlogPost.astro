@@ -1,0 +1,87 @@
+---
+import '../styles/dark.css';
+
+const { title, date, tag } = Astro.props;
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>amdkits — {title}</title>
+</head>
+<body class="post-body">
+  <main class="post">
+    <a class="post-back" href="/blog">← back to blog</a>
+    <header class="post-header">
+      <span class="post-tag">[{tag}]</span>
+      <h1 class="post-title">{title}</h1>
+      <span class="post-date">{date}</span>
+    </header>
+    <article class="post-content">
+      <slot />
+    </article>
+  </main>
+</body>
+</html>
+
+<style>
+  .post-body {
+    margin: 0;
+    background: var(--bg);
+    min-height: 100vh;
+    font-family: "Courier New", monospace;
+    color: var(--konata-blue-soft);
+  }
+  .post {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+  .post-back {
+    color: var(--border);
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+  .post-back:hover {
+    color: var(--konata-blue-soft);
+  }
+  .post-header {
+    margin: 2rem 0 2.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  .post-tag {
+    color: var(--konata-blue);
+    font-size: 0.85rem;
+  }
+  .post-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0.4rem 0;
+    color: var(--konata-blue-soft);
+  }
+  .post-date {
+    color: var(--border);
+    font-size: 0.8rem;
+  }
+  .post-content {
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #c4cdd8;
+  }
+  .post-content :global(h2) {
+    color: var(--konata-blue-soft);
+    font-size: 1.1rem;
+    margin-top: 2rem;
+  }
+  .post-content :global(pre) {
+    background: #11151f;
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .post-content :global(a) {
+    color: var(--konata-blue);
+  }
+</style>
