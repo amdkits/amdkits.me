@@ -41,7 +41,7 @@ body {
 }
 
 .window {
-  background: rgba(174, 188, 199, 1);
+  background: rgba(174, 188, 199, 0.4);
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
