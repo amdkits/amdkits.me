@@ -1,0 +1,28 @@
+#terminal {
+  position: absolute;
+  top: -120px;
+  left: 650px;
+  right: 100px;
+  width: 520px;
+  height: 420px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 8px;
+}
+
+.xterm {
+  font-family: "FiraCode Nerd Font";
+  font-size: 15px;
+}
+
+.xterm-screen {
+  background: transparent;
+}
+
+.xterm-viewport {
+  overflow: hidden !important;
+}
+
+.xterm-cursor {
+  background: #c4746e !important;
+}

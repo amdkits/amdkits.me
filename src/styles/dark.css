@@ -25,7 +25,8 @@ body {
 }
 
 .box {
-  width: 500px;
+  postion: relative;
+  max-width: 500px;
 }
 
 .hero {
