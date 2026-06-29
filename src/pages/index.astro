@@ -1,17 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
+import '../styles/pages_index.css'
 
 const updates = [
-  { date: "2026-06-20", tag: "OS", label: "real mode boot sector notes" },
-  { date: "2026-06-10", tag: "LeetCode", label: "graph streak day 110" },
-  { date: "2026-05-28", tag: "Guitar", label: "rasgueo practice log" },
-  { date: "2026-05-15", tag: "Cache", label: "LRU eviction writeup" },
-  { date: "2026-05-02", tag: "German", label: "B1 → B2 notes" },
-  { date: "2026-06-20", tag: "OS", label: "real mode boot sector notes" },
-  { date: "2026-06-20", tag: "OS", label: "real mode boot sector notes" },
-  { date: "2026-06-20", tag: "OS", label: "real mode boot sector notes" },
-  { date: "2026-06-10", tag: "LeetCode", label: "graph streak day 110" },
-  { date: "2026-05-28", tag: "Guitar", label: "rasgueo practice log" },
+  { date: "2026-06-20", tag: "OS", label: "removed terminal in hopes for adding a beter one in future" },
+  { date: "2026-06-10", tag: "LeetCode", label: "this site is under construction" },
+  { date: "2026-05-28", tag: "Guitar", label: "rest below are placeholders" },
+  { date: "2026-05-15", tag: "Cache", label: "i am taking it slow, " },
+  { date: "2026-05-02", tag: "German", label: "ideas are forming" },
+  { date: "2026-06-20", tag: "OS", label: "if ye got any contact me" },
+  { date: "2026-06-20", tag: "OS", label: "i wanna make it super sleek" },
+  { date: "2026-06-20", tag: "OS", label: "the dream of making it a indie web site is kinda vanished" },
+  { date: "2026-06-10", tag: "LeetCode", label: "ig i'll try it when ik shit about webdev" },
+  { date: "2026-05-28", tag: "Guitar", label: "designing is not my jam tbh" },
   { date: "2026-05-15", tag: "Cache", label: "LRU eviction writeup" },
   { date: "2026-06-10", tag: "LeetCode", label: "graph streak day 110" },
   { date: "2026-05-28", tag: "Guitar", label: "rasgueo practice log" },
@@ -27,8 +28,12 @@ const updates = [
     <ul>
       {updates.map((u) => (
         <li>
-          <span class="date">{u.date}</span> ·
-          <a href="#">[{u.tag}] {u.label}</a>
+          <span class="date">{u.date}</span>
+          <span class="sep">·</span>
+          <a href="#">
+            <span class="tag">[{u.tag}]</span>
+            <span class="label">{u.label}</span>
+          </a>
         </li>
       ))}
     </ul>
