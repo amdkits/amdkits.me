@@ -3,6 +3,7 @@
 }
 
 .updates li {
+  display: grid;
   grid-template-columns: 11ch 11ch 1fr;
   column-gap: 0.75rem;
   align-items: start;
