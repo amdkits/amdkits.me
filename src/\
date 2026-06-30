@@ -41,15 +41,15 @@ const current = Astro.url.pathname;
 
   .sidebar-handle {
     position: fixed;
-    top: 24.5rem;
-    left: 37.5rem;
+    top: 23rem;
+    left: 10rem;
     z-index: 10;
     cursor: pointer;
     color: var(--konata-blue-soft);
     font-family: "Courier New", monospace;
     font-size: 1.2rem;
     background: var(--titlebar-bg);
-    padding: 0.2rem 0.55rem;
+    padding: 0.2rem 0.58rem;
     border-radius: 1px;
   }
 

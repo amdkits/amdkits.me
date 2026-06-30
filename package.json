@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "astro": "^6.4.7",
+    "jquery": "3.7.1",
+    "jquery.terminal": "^2.46.1",
     "xterm": "^5.3.0"
   }
 }

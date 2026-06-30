@@ -29,6 +29,7 @@ body {
   max-width: 500px;
 }
 
+
 .hero {
   padding: 1.5rem 0.5rem;
 }
@@ -39,6 +40,15 @@ body {
   font-size: 1.3rem;
   font-weight: 400;
   margin: 0.5rem 0 0;
+}
+
+.moon-link {
+  display: inline-block;
+}
+
+.moon-link,
+.wordmark {
+  text-decoration: none;
 }
 
 .window {
