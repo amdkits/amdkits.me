@@ -42,10 +42,8 @@ const current = Astro.url.pathname;
 
   .sidebar-handle {
     position: fixed;
-
-    left: calc(100px + 500px + 0px);
-    top: 354px;
-
+    top: 22.15rem;
+    left: 37.5rem;
     z-index: 10;
     cursor: pointer;
     color: var(--konata-blue-soft);
