@@ -1,9 +1,9 @@
 (function oneko() {
-  const isReducedMotion =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   if (isReducedMotion) return;
 
-  // Path to your sprite sheet — put it in /public and reference from root
   const nekoEl = document.createElement("div");
   let nekoPosX = 32;
   let nekoPosY = 32;
@@ -18,7 +18,6 @@
 
   const nekoSpeed = 10;
 
-  // Each entry: [x, y] cell coords in the sprite sheet, in units of 32px
   const spriteSets = {
     idle: [[-3, -3]],
     alert: [[-7, -3]],
@@ -82,7 +81,18 @@
     ],
   };
 
+  let started = false;
+
   function init() {
+    // if the cat already exists but got detached by an Astro page swap,
+    // just re-attach the SAME element instead of building a new one
+    if (!nekoEl.isConnected) {
+      document.body.appendChild(nekoEl);
+    }
+
+    if (started) return; // one-time setup only needs to run once ever
+    started = true;
+
     nekoEl.id = "oneko";
     nekoEl.ariaHidden = true;
     nekoEl.style.width = "32px";
@@ -95,8 +105,6 @@
     nekoEl.style.zIndex = 2147483647;
 
     nekoEl.style.backgroundImage = "url('/oneko.gif')";
-
-    document.body.appendChild(nekoEl);
 
     document.addEventListener("mousemove", (event) => {
       mousePosX = event.clientX;
@@ -192,18 +200,14 @@
     nekoPosX -= (diffX / distance) * nekoSpeed;
     nekoPosY -= (diffY / distance) * nekoSpeed;
 
-    nekoPosX = Math.min(
-      Math.max(16, nekoPosX),
-      window.innerWidth - 16
-    );
-    nekoPosY = Math.min(
-      Math.max(16, nekoPosY),
-      window.innerHeight - 16
-    );
+    nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
+    nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
 
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
   }
 
+  // run on first load, and again after every Astro soft navigation
   init();
+  document.addEventListener("astro:page-load", init);
 })();
