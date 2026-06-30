@@ -1,26 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
-import '../styles/pages_index.css'
+import '../styles/pages_index.css';
+import { getCollection } from 'astro:content';
 
-const updates = [
-  { date: "2026-06-20", tag: "OS", label: "removed terminal in hopes for adding a beter one in future" },
-  { date: "2026-06-10", tag: "LeetCode", label: "this site is under construction" },
-  { date: "2026-05-28", tag: "Guitar", label: "rest below are placeholders" },
-  { date: "2026-05-15", tag: "Cache", label: "i am taking it slow, " },
-  { date: "2026-05-02", tag: "German", label: "ideas are forming" },
-  { date: "2026-06-20", tag: "OS", label: "if ye got any contact me" },
-  { date: "2026-06-20", tag: "OS", label: "i wanna make it super sleek" },
-  { date: "2026-06-20", tag: "OS", label: "the dream of making it a indie web site is kinda vanished" },
-  { date: "2026-06-10", tag: "LeetCode", label: "ig i'll try it when ik shit about webdev" },
-  { date: "2026-05-28", tag: "Guitar", label: "designing is not my jam tbh" },
-  { date: "2026-05-15", tag: "Cache", label: "LRU eviction writeup" },
-  { date: "2026-06-10", tag: "LeetCode", label: "graph streak day 110" },
-  { date: "2026-05-28", tag: "Guitar", label: "rasgueo practice log" },
-  { date: "2026-05-15", tag: "Cache", label: "LRU eviction writeup" },
-  { date: "2026-06-10", tag: "LeetCode", label: "graph streak day 110" },
-  { date: "2026-05-28", tag: "Guitar", label: "rasgueo practice log" },
-  { date: "2026-05-15", tag: "Cache", label: "LRU eviction writeup" },
-];
+// 1. Fetch all posts from the unified collection
+const allPosts = await getCollection('posts');
+
+// 2. Sort them by date (newest first)
+const updates = allPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 <Base title="home">
   <div class="updates">
@@ -28,11 +17,12 @@ const updates = [
     <ul>
       {updates.map((u) => (
         <li>
-          <span class="date">{u.date}</span>
+          <span class="date">{u.data.date}</span>
           <span class="sep">·</span>
-          <a href="#">
-            <span class="tag">[{u.tag}]</span>
-            <span class="label">{u.label}</span>
+          {/* Dynamically build the URL using the category and filename */}
+          <a href={`/${u.data.category}/${u.id}`}>
+            <span class="tag">[{u.data.tag}]</span>
+            <span class="label">{u.data.title}</span>
           </a>
         </li>
       ))}

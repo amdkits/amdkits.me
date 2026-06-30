@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  // Auto-discover every unique category present in your posts
+  const categories = [...new Set(posts.map((post) => post.data.category))];
+  
+  return categories.map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const allPosts = await getCollection('posts');
+
+// This logic automatically filters by the current category
+const posts = allPosts
+  .filter((p) => p.data.category === category)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Base title={category}>
+  <div class="updates">
+    <h2>{category}</h2>
+    <ul>
+      {posts.map((post) => (
+        <li>
+          <span class="date">{post.data.date}</span>
+          <span class="sep">·</span>
+          <a href={`/${category}/${post.id}`}>
+            <span class="tag">[{post.data.tag}]</span>
+            <span class="label">{post.data.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

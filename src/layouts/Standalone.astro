@@ -1,0 +1,18 @@
+---
+// A simplified layout that gives you the header/styles 
+// but none of the "Terminal Box" chrome.
+import '../styles/dark.css';
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>amdkits — {title}</title>
+  </head>
+  <body>
+    <nav><a href="/">← home</a></nav>
+    <main class="content-full">
+      <slot />
+    </main>
+  </body>
+</html>

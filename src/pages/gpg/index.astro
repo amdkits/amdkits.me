@@ -1,0 +1,10 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import { getEntry, render } from 'astro:content';
+const entry = await getEntry('gpg', 'gpg');
+const { Content } = entry ? await render(entry) : { Content: null };
+---
+<BlogPost title="GPG Key">
+  {entry && <h1>{entry.data.title}</h1>}
+  {Content ? <Content /> : <p>Key not found.</p>}
+</BlogPost>
