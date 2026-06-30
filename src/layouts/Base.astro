@@ -3,8 +3,18 @@ import { ClientRouter } from "astro:transitions";
 import '../styles/dark.css';
 import Sidebar from '../components/sidebar.astro';
 import MusicPlayer from '../components/MusicPlayer.astro';
+import AsciiLogo from "../components/AsciiLogo.astro"
 const { title = "amdkits" } = Astro.props;
 ---
+<script is:inline>
+console.log(`
+▄▄▄       ███▄ ▄███▓▓█████▄  ██ ▄█▀ ██▓▄▄▄█████▓  ██████
+▒████▄    ▓██▒▀█▀ ██▒▒██▀ ██▌ ██▄█▒ ▓██▒▓  ██▒ ▓▒▒██    ▒
+▒██  ▀█▄  ▓██    ▓██░░██   █▌▓███▄░ ▒██▒▒ ▓██░ ▒░░ ▓██▄
+░██▄▄▄▄██ ▒██    ▒██ ░▓█▄   ▌▓██ █▄ ░██░░ ▓██▓ ░   ▒   ██▒
+▓█   ▓██▒▒██▒   ░██▒░▒████▓ ▒██▒ █▄░██░  ▒██▒ ░ ▒██████▒▒
+`);
+</script>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -20,7 +30,7 @@ const { title = "amdkits" } = Astro.props;
   <div class="page">
     <div class="box">
 
-    <div class="hero">
+      <!--    <div class="hero">
       <a href="/" class="moon-link">
       <div class="moon">
         <svg viewBox="0 0 100 100" width="80" height="80">
@@ -30,6 +40,12 @@ const { title = "amdkits" } = Astro.props;
         </svg>
       </div>
       <h1 class="wordmark">a m d k i t s</h1>
+      </a>
+      </div> -->
+
+    <div class="hero">
+      <a href="/" class="ascii-link">
+        <AsciiLogo />
       </a>
     </div>
 

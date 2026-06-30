@@ -29,12 +29,7 @@ body {
   max-width: 500px;
 }
 
-
-.hero {
-  padding: 1.5rem 0.5rem;
-}
-
-.wordmark {
+/*.wordmark {
   color: var(--konata-blue-soft);
   letter-spacing: 0.4rem;
   font-size: 1.3rem;
@@ -49,6 +44,40 @@ body {
 .moon-link,
 .wordmark {
   text-decoration: none;
+}
+*/
+
+.hero {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+
+.ascii-link {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ascii-logo {
+  margin: 0;
+
+  font-family: monospace;
+  white-space: pre;
+
+  font-size: 1.0rem;
+  line-height: 1;
+
+  color: var(--konata-blue-soft);
+
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease;
+}
+
+.ascii-link:hover .ascii-logo {
+  color: white;
+  transform: scale(1.02);
 }
 
 .window {
@@ -179,7 +208,7 @@ body {
 /* ---------- MOBILE RESPONSIVE ---------- */
 @media (max-width: 600px) {
   .page {
-    transform: none;       /* kill the fixed desktop offset entirely */
+    transform: none; /* kill the fixed desktop offset entirely */
     width: 100%;
     padding: 1rem;
   }
@@ -203,7 +232,7 @@ body {
   }
 
   .navrow {
-    flex-wrap: wrap;        /* let nav items wrap instead of overflowing */
+    flex-wrap: wrap; /* let nav items wrap instead of overflowing */
     gap: 0.8rem;
   }
 
@@ -211,7 +240,7 @@ body {
   .content {
     margin: 0.4rem;
     font-size: 0.8rem;
-    max-height: 260px;      /* shorter scroll area, more screen is precious */
+    max-height: 260px; /* shorter scroll area, more screen is precious */
   }
 
   /* sidebar handle and music player both float fixed —
@@ -234,7 +263,7 @@ body {
   }
 
   #music-title {
-    max-width: 8ch;          /* less room, trim title display further */
+    max-width: 8ch; /* less room, trim title display further */
   }
 }
 
