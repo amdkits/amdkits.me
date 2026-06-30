@@ -2,6 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import '../styles/dark.css';
 import Sidebar from '../components/sidebar.astro';
+import MusicPlayer from '../components/MusicPlayer.astro';
 const { title = "amdkits" } = Astro.props;
 ---
 <html lang="en">
@@ -14,6 +15,7 @@ const { title = "amdkits" } = Astro.props;
 <body>
 <div id="oneko" transition:persist></div>
 <script src="/oneko.js" is:inline></script>
+      <MusicPlayer />
       <Sidebar />
   <div class="page">
     <div class="box">

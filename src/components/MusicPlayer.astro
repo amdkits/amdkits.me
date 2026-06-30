@@ -1,0 +1,138 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+
+const musicDir = path.join(process.cwd(), "public", "music");
+const files = fs.existsSync(musicDir)
+  ? fs.readdirSync(musicDir).filter((f) => f.toLowerCase().endsWith(".mp3"))
+  : [];
+
+const playlist = files.map((file) => ({
+  src: `/music/${file}`,
+  title: file.replace(/\.mp3$/i, "").replace(/_/g, " "),
+}));
+---
+<div id="music-player" transition:persist data-playlist={JSON.stringify(playlist)}>
+  <audio id="bg-audio" preload="none"></audio>
+  <div class="music-controls">
+    <button id="music-prev" aria-label="previous track">«</button>
+    <button id="music-toggle" aria-label="play/pause">▶</button>
+    <button id="music-next" aria-label="next track">»</button>
+    <button id="music-mute" aria-label="mute">♪</button>
+    <span id="music-title"></span>
+  </div>
+</div>
+
+<style>
+  #music-player {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 100;
+    font-family: "Courier New", monospace;
+    background: var(--titlebar-bg, #3c4a5e);
+    border: 1px solid var(--border, #6b7a8c);
+    border-radius: 3px;
+    padding: 0.3rem 0.5rem;
+  }
+  .music-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .music-controls button {
+    font-family: inherit;
+    background: transparent;
+    color: var(--konata-blue-soft, #8fc1dd);
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.1rem 0.3rem;
+  }
+  .music-controls button:hover {
+    color: var(--konata-blue, #5ba3c7);
+  }
+  .music-controls button.active {
+    color: var(--konata-blue, #5ba3c7);
+  }
+  #music-title {
+    font-size: 0.75rem;
+    color: var(--border, #6b7a8c);
+    max-width: 12ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  let unlocked = false;
+
+  function initMusic() {
+    const playerEl = document.getElementById("music-player") as HTMLDivElement;
+    const audio = document.getElementById("bg-audio") as HTMLAudioElement;
+    const toggleBtn = document.getElementById("music-toggle") as HTMLButtonElement;
+    const prevBtn = document.getElementById("music-prev") as HTMLButtonElement;
+    const nextBtn = document.getElementById("music-next") as HTMLButtonElement;
+    const muteBtn = document.getElementById("music-mute") as HTMLButtonElement;
+    const titleEl = document.getElementById("music-title") as HTMLSpanElement;
+    if (!playerEl || !audio || !toggleBtn) return;
+    if (audio.dataset.bound) return;
+    audio.dataset.bound = "true";
+
+    const playlist: { src: string; title: string }[] = JSON.parse(
+      playerEl.dataset.playlist || "[]"
+    );
+    if (playlist.length === 0) return;
+
+    function loadTrack(index: number, autoplay: boolean) {
+      currentIndex = (index + playlist.length) % playlist.length;
+      const track = playlist[currentIndex];
+      audio.src = track.src;
+      titleEl.textContent = track.title;
+      if (autoplay) audio.play().catch(() => {});
+    }
+
+    function updateToggleIcon() {
+      toggleBtn.textContent = audio.paused ? "▶" : "❚❚";
+    }
+
+    loadTrack(0, false);
+
+    toggleBtn.addEventListener("click", () => {
+      if (audio.paused) audio.play();
+      else audio.pause();
+    });
+    audio.addEventListener("play", updateToggleIcon);
+    audio.addEventListener("pause", updateToggleIcon);
+
+    prevBtn.addEventListener("click", () => loadTrack(currentIndex - 1, true));
+    nextBtn.addEventListener("click", () => loadTrack(currentIndex + 1, true));
+    audio.addEventListener("ended", () => loadTrack(currentIndex + 1, true));
+
+    muteBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+      muteBtn.classList.toggle("active", audio.muted);
+    });
+
+    audio.muted = true;
+    audio.play().catch(() => {});
+
+    function unlockAudio() {
+      if (unlocked) return;
+      unlocked = true;
+      audio.muted = false;
+      audio.play().catch(() => {});
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
+      window.removeEventListener("touchstart", unlockAudio);
+    }
+    window.addEventListener("click", unlockAudio, { once: true });
+    window.addEventListener("keydown", unlockAudio, { once: true });
+    window.addEventListener("touchstart", unlockAudio, { once: true });
+  }
+
+  initMusic();
+  document.addEventListener("astro:page-load", initMusic);
+</script>
