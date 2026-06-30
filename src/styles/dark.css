@@ -175,3 +175,75 @@ body {
 .content a:hover {
   text-decoration: underline;
 }
+
+/* ---------- MOBILE RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .page {
+    transform: none;       /* kill the fixed desktop offset entirely */
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .box {
+    max-width: 100%;
+  }
+
+  .hero {
+    padding: 1rem 0.25rem;
+  }
+
+  .wordmark {
+    font-size: 1.1rem;
+    letter-spacing: 0.25rem; /* original 0.4rem is too wide on narrow screens */
+  }
+
+  .moon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .navrow {
+    flex-wrap: wrap;        /* let nav items wrap instead of overflowing */
+    gap: 0.8rem;
+  }
+
+  .updates,
+  .content {
+    margin: 0.4rem;
+    font-size: 0.8rem;
+    max-height: 260px;      /* shorter scroll area, more screen is precious */
+  }
+
+  /* sidebar handle and music player both float fixed —
+     shrink them slightly so they don't eat too much edge space */
+  .sidebar-handle {
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 1rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .sidebar {
+    width: 150px;
+  }
+
+  #music-player {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  #music-title {
+    max-width: 8ch;          /* less room, trim title display further */
+  }
+}
+
+@media (max-width: 600px) {
+  .post {
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .post-title {
+    font-size: 1.3rem;
+  }
+}
