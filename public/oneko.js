@@ -1,10 +1,10 @@
 (function oneko() {
-  const isReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
+  const isReducedMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (isReducedMotion) return;
 
-  const nekoEl = document.createElement("div");
+  const nekoEl = document.getElementById("oneko");
+  if (!nekoEl) return; // placeholder div not found, bail out
   let nekoPosX = 32;
   let nekoPosY = 32;
 
@@ -84,12 +84,6 @@
   let started = false;
 
   function init() {
-    // if the cat already exists but got detached by an Astro page swap,
-    // just re-attach the SAME element instead of building a new one
-    if (!nekoEl.isConnected) {
-      document.body.appendChild(nekoEl);
-    }
-
     if (started) return; // one-time setup only needs to run once ever
     started = true;
 
@@ -207,7 +201,5 @@
     nekoEl.style.top = `${nekoPosY - 16}px`;
   }
 
-  // run on first load, and again after every Astro soft navigation
   init();
-  document.addEventListener("astro:page-load", init);
 })();
