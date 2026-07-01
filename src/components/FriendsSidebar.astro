@@ -17,10 +17,14 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   <!-- Title Bar -->
   <div class="title-bar">
     <div class="title-text">
-      <span>friends</span>
+      <span class="blink">@</span>friends
     </div>
+    
     <!-- The label acts as the minimize/maximize button -->
-    <label for="window-minimize" class="control-btn">[ _ ]</label>
+    <label for="window-minimize" class="control-btn">
+      <span class="icon-min">[ - ]</span>
+      <span class="icon-max">[ + ]</span>
+    </label>
   </div>
 
   <!-- Window Body -->
@@ -51,14 +55,14 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   /* Main Window Container - Floating bottom right */
   .os-window {
     position: fixed;
-    bottom: 60px;
+    /* Adjusted so the title bar doesn't jump when minimized */
+    bottom: 60px; 
     right: 20px;
     width: 260px;
     background: var(--bg);
     border: 1px solid var(--border);
     font-family: "Courier New", monospace;
     z-index: 50;
-    /* Optional drop shadow for floating effect */
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
   }
 
@@ -67,7 +71,6 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Using your accent color for the title bar background */
     background: var(--konata-blue-soft); 
     color: var(--bg);
     padding: 3px 8px;
@@ -75,21 +78,22 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     font-size: 0.85rem;
   }
 
-  .title-text span {
-    animation: blink 1s step-end infinite;
+  /* Only blink the > cursor, not the whole word */
+  .blink {
+    animation: blinker 1s step-end infinite;
   }
 
-  @keyframes blink {
+  @keyframes blinker {
     50% { opacity: 0; }
   }
 
-  /* Minimize Button */
+  /* Minimize Button Base */
   .control-btn {
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     padding: 0 4px;
     user-select: none;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
   }
 
   .control-btn:hover {
@@ -97,36 +101,56 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     color: var(--konata-blue-soft);
   }
 
+  /* Hide the Maximize button by default */
+  .icon-max {
+    display: none;
+  }
+
   /* Window Body (Content) */
   .window-body {
     padding: 15px;
     background: var(--bg);
+    /* Prevents window from growing too tall */
+    max-height: 50vh; 
+    /* Enables scrolling when you have many friends */
+    overflow-y: auto; 
+  }
+
+  /* Custom Scrollbar for the retro vibe */
+  .window-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  .window-body::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+  }
+  .window-body::-webkit-scrollbar-thumb {
+    background: var(--konata-blue-soft);
   }
 
   /* --- MINIMIZE LOGIC --- */
-  /* When the checkbox is checked, hide the body */
+  
+  /* 1. Hide the body when minimized */
   .window-toggle:checked ~ .os-window .window-body {
     display: none;
   }
 
-  /* When minimized, drop it flat against the bottom of the screen */
+  /* 2. Remove shadow when collapsed */
   .window-toggle:checked ~ .os-window {
-    bottom: 65px;
     box-shadow: none;
-    border-bottom: none;
+    /* Maintain the exact same bottom position so it stays still */
+    bottom: 60px; 
+    border-bottom: 1px solid var(--border);
   }
 
-  /* Change button text to a square/restore icon when minimized */
-  .window-toggle:checked ~ .os-window .control-btn::after {
-    content: " [ + ]";
-    position: absolute;
-    right: 8px;
-    background: inherit;
+  /* 3. Swap the icons: Hide [-] and Show [+] */
+  .window-toggle:checked ~ .os-window .icon-min {
+    display: none;
   }
-  .window-toggle:checked ~ .os-window .control-btn {
-    color: transparent; /* hide the underscore */
-  }
-
+  .window-toggle:checked ~ .os-window .icon-max {
+    display: inline;
+  }  
+  
   /* Content Styling */
   .badge-grid {
     display: grid;
