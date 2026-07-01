@@ -1,0 +1,40 @@
+---
+const myUrl = "https://amdkits.me";
+const ringUrl = "https://amdkits.me/webring.json";
+---
+
+<div class="webring-box">
+  <p>--- webring ---</p>
+  <div class="ring-links">
+    <!-- Added &webring= parameter so it knows where your list is -->
+    <a href={`https://webring.npx.wtf/prev?from=${myUrl}&webring=${ringUrl}`}>&lt;&lt; prev</a>
+    <a href="https://amdkits.me/webring">index</a>
+    <a href={`https://webring.npx.wtf/next?from=${myUrl}&webring=${ringUrl}`}>next &gt;&gt;</a>
+  </div>
+</div>
+
+<style>
+  .webring-box {
+    margin-top: 2rem;
+    padding: 10px;
+    border: 1px solid var(--border);
+    font-family: "Courier New", monospace;
+    font-size: 0.75rem;
+    color: var(--konata-blue-soft);
+    text-align: center;
+  }
+  .ring-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 0.5rem;
+  }
+  .webring-box a {
+    color: var(--konata-blue-soft);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .webring-box a:hover {
+    text-decoration: underline;
+  }
+</style>
