@@ -13,6 +13,6 @@ learning low level and systems engineering.\\
 
 Still learning life and finding new things.\\
 
-here's my [x dot com](tab:https://x.com/amdkits), also linked in nav bar.
+here's my [x dot com](https://x.com/amdkits), also linked in nav bar.
 
 also! [buy me a coffee if you like me](https://buymeacoffee.com/amdkits) 👉🏻👈🏻
