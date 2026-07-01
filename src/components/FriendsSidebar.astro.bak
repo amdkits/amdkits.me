@@ -1,0 +1,160 @@
+---
+// src/components/FriendsSidebar.astro
+
+// Replace these with your actual friends' URLs and their badge images
+const friendBadges = [
+  { name: "melqtx", url: "https://melqtx.com", badge: "https://melqtx.com/images/mel-88x31.png?v=0e3ee4d" },
+];
+
+// Pure standalone badge embed code (no webring routing)
+const embedCode = `<a href="https://amdkits.me" title="amdkits">
+  <img src="https://amdkits.me/kits.gif" alt="amdkits" width="600" height="80" style="image-rendering: pixelated; border: none;">
+</a>`;
+---
+
+<!-- The hidden checkbox that controls the toggle state -->
+<input type="checkbox" id="friends-toggle" class="friends-toggle-input" />
+
+<!-- The visible handle you click to open the sidebar -->
+<label for="friends-toggle" class="friends-handle">[ friends ]</label>
+
+<aside class="friends-sidebar">
+  <div class="panel-content">
+    
+    <!-- Friends' Badges Grid -->
+    <div class="section">
+      <p>--- network ---</p>
+      <div class="badge-grid">
+        {friendBadges.map((friend) => (
+          <a href={friend.url} target="_blank" title={friend.name}>
+            <img src={friend.badge} alt={`${friend.name} badge`} class="pixel-art" width="88" height="31" />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Your Badge and Code -->
+    <div class="section">
+      <p>--- my badge ---</p>
+      <div class="my-badge-container">
+        <img src="/kits.gif" alt="amdkits blinkie" class="pixel-art" width="88" height="31" />
+      </div>
+      
+      <p class="instruction">embed code:</p>
+      <textarea class="code-box" readonly onclick="this.select()">{embedCode}</textarea>
+    </div>
+
+  </div>
+</aside>
+
+<style>
+  /* Hidden Checkbox */
+  .friends-toggle-input {
+    display: none;
+  }
+
+  /* The Button on the right side of the screen */
+  .friends-handle {
+    position: fixed;
+    right: 0;
+    top: 354px; /* Matches the vertical position of your left sidebar handle */
+    z-index: 10;
+    cursor: pointer;
+    color: var(--konata-blue-soft);
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    background: var(--titlebar-bg);
+    padding: 0.2rem 0.55rem;
+    border-radius: 1px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* The Sidebar Panel */
+  .friends-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 240px; 
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+    padding: 3rem 1rem 1rem;
+    font-family: "Courier New", monospace;
+    transform: translateX(100%); 
+    transition: transform 0.2s ease;
+    z-index: 9;
+    overflow-y: auto;
+  }
+
+  .friends-toggle-input:checked ~ .friends-sidebar {
+    transform: translateX(0);
+  }
+
+  .friends-toggle-input:checked ~ .friends-handle {
+    right: 240px;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section p {
+    color: var(--konata-blue-soft);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .badge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .badge-grid a {
+    display: block;
+    transition: transform 0.1s ease;
+  }
+
+  .badge-grid a:hover {
+    transform: translateY(-2px);
+  }
+
+  .my-badge-container {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .pixel-art {
+    image-rendering: pixelated;
+    border: 1px solid var(--border);
+  }
+
+  .instruction {
+    font-size: 0.7rem;
+    color: var(--border);
+    margin: 0 0 0.2rem 0 !important;
+    text-align: left !important;
+  }
+
+  .code-box {
+    width: 100%;
+    height: 130px; /* Reduced height since the code is shorter now */
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--konata-blue-soft);
+    font-family: "Courier New", monospace;
+    font-size: 0.65rem;
+    padding: 0.4rem;
+    resize: none;
+    cursor: text;
+  }
+
+  .code-box::selection {
+    background: var(--konata-blue-soft);
+    color: var(--bg);
+  }
+</style>

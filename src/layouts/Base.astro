@@ -4,6 +4,7 @@ import '../styles/dark.css';
 import Sidebar from '../components/sidebar.astro';
 import MusicPlayer from '../components/MusicPlayer.astro';
 import AsciiLogo from "../components/AsciiLogo.astro"
+import FriendsSidebar from "../components/FriendsSidebar.astro"
 const { title = "amdkits" } = Astro.props;
 ---
 <html lang="en">
@@ -33,6 +34,7 @@ console.log(`
 <script src="/oneko.js" is:inline></script>
       <MusicPlayer />
       <Sidebar />
+      <FriendsSidebar />
   <div class="page">
     <div class="box">
 
