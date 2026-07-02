@@ -1,33 +1,34 @@
 ---
-import '../styles/dark.css';
-import MusicPlayer from '../components/MusicPlayer.astro';
+import "../styles/dark.css";
+import MusicPlayer from "../components/MusicPlayer.astro";
 import { ClientRouter } from "astro:transitions";
 
 const { title, date, tag } = Astro.props;
 ---
+
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>amdkits — {title}</title>
-  <ClientRouter />
-</head>
-<body class="post-body">
-  <div id="oneko" transition:persist></div>
-  <script src="/oneko.js" is:inline></script>
-  <MusicPlayer />
-  <main class="post">
-    <a class="post-back" href="/">← back home?</a>
-    <header class="post-header">
-      <span class="post-tag">[{tag}]</span>
-      <h1 class="post-title">{title}</h1>
-      <span class="post-date">{date}</span>
-    </header>
-    <article class="post-content">
-      <slot />
-    </article>
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>amdkits — {title}</title>
+    <ClientRouter />
+  </head>
+  <body class="post-body">
+    <div id="oneko" transition:persist></div>
+    <script src="/oneko.js" is:inline></script>
+    <MusicPlayer />
+    <main class="post">
+      <a class="post-back" href="/">← back home?</a>
+      <header class="post-header">
+        <span class="post-tag">[{tag}]</span>
+        <h1 class="post-title">{title}</h1>
+        <span class="post-date">{date}</span>
+      </header>
+      <article class="post-content">
+        <slot />
+      </article>
+    </main>
+  </body>
 </html>
 
 <style>

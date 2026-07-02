@@ -3,15 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 
 const musicDir = path.join(process.cwd(), "public", "music");
-const files = fs.existsSync(musicDir)
-  ? fs.readdirSync(musicDir).filter((f) => f.toLowerCase().endsWith(".mp3"))
-  : [];
+const files = fs.existsSync(musicDir) ? fs.readdirSync(musicDir).filter((f) => f.toLowerCase().endsWith(".mp3")) : [];
 
 const playlist = files.map((file) => ({
   src: `/music/${file}`,
   title: file.replace(/\.mp3$/i, "").replace(/_/g, " "),
 }));
 ---
+
 <div id="music-player" transition:persist data-playlist={JSON.stringify(playlist)}>
   <audio id="bg-audio" preload="none"></audio>
   <div class="music-controls">
@@ -81,9 +80,7 @@ const playlist = files.map((file) => ({
     if (audio.dataset.bound) return;
     audio.dataset.bound = "true";
 
-    const playlist: { src: string; title: string }[] = JSON.parse(
-      playerEl.dataset.playlist || "[]"
-    );
+    const playlist: { src: string; title: string }[] = JSON.parse(playerEl.dataset.playlist || "[]");
     if (playlist.length === 0) return;
 
     function loadTrack(index: number, autoplay: boolean) {

@@ -1,17 +1,18 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import '../styles/dark.css';
-import Sidebar from '../components/sidebar.astro';
-import MusicPlayer from '../components/MusicPlayer.astro';
-import AsciiLogo from "../components/AsciiLogo.astro"
-import FriendsSidebar from "../components/FriendsSidebar.astro"
+import "../styles/dark.css";
+import Sidebar from "../components/sidebar.astro";
+import MusicPlayer from "../components/MusicPlayer.astro";
+import AsciiLogo from "../components/AsciiLogo.astro";
+import FriendsSidebar from "../components/FriendsSidebar.astro";
 const { title = "amdkits" } = Astro.props;
 ---
+
 <html lang="en">
-<head>
-  <link rel="icon" type="image/png" href="/favicon.ico" />
-<script is:inline>
-console.log(`
+  <head>
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <script is:inline>
+      console.log(`
  ▄▄▄       ███▄ ▄███▓▓█████▄  ██ ▄█▀ ██▓▄▄▄█████▓  ██████ 
 ▒████▄    ▓██▒▀█▀ ██▒▒██▀ ██▌ ██▄█▒ ▓██▒▓  ██▒ ▓▒▒██    ▒ 
 ▒██  ▀█▄  ▓██    ▓██░░██   █▌▓███▄░ ▒██▒▒ ▓██░ ▒░░ ▓██▄   
@@ -23,22 +24,21 @@ console.log(`
       ░  ░       ░      ░    ░  ░    ░                 ░  
                       ░                                   
 `);
-</script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>amdkits — {title}</title>
-  <ClientRouter />
-</head>
-<body>
-<div id="oneko" transition:persist></div>
-<script src="/oneko.js" is:inline></script>
-      <MusicPlayer />
-      <Sidebar />
-      <FriendsSidebar />
-  <div class="page">
-    <div class="box">
-
-      <!--    <div class="hero">
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>amdkits — {title}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <div id="oneko" transition:persist></div>
+    <script src="/oneko.js" is:inline></script>
+    <MusicPlayer />
+    <Sidebar />
+    <FriendsSidebar />
+    <div class="page">
+      <div class="box">
+        <!--    <div class="hero">
       <a href="/" class="moon-link">
       <div class="moon">
         <svg viewBox="0 0 100 100" width="80" height="80">
@@ -51,29 +51,28 @@ console.log(`
       </a>
       </div> -->
 
-    <div class="hero">
-      <a href="/" class="ascii-link">
-        <AsciiLogo />
-      </a>
-    </div>
+        <div class="hero">
+          <a href="/" class="ascii-link">
+            <AsciiLogo />
+          </a>
+        </div>
 
-    <div class="window">
-      <div class="titlebar"><span>⛩️ El, Psy, Congroo</span></div>
+        <div class="window">
+          <div class="titlebar"><span>⛩️ El, Psy, Congroo</span></div>
 
-      <div class="navbar">
-      <nav class="navrow">
-        <a href="/">home</a>
-        <a href="/about">about</a>
-        <a href="/blogs">blogs</a>
-        <a href="https://x.com/amdkits" target="_blank">twt</a>
-        <a href="https://leetcode.com/u/amdkits/" target="_blank">leetcode</a>
-      </nav>
+          <div class="navbar">
+            <nav class="navrow">
+              <a href="/">home</a>
+              <a href="/about">about</a>
+              <a href="/blogs">blogs</a>
+              <a href="https://x.com/amdkits" target="_blank">twt</a>
+              <a href="https://leetcode.com/u/amdkits/" target="_blank">leetcode</a>
+            </nav>
+          </div>
+
+          <slot />
+        </div>
       </div>
-
-      <slot />
     </div>
-    </div>
-
-  </div>
-</body>
+  </body>
 </html>

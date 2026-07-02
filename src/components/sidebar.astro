@@ -1,5 +1,5 @@
 ---
-import Webring from "./Webring.astro"
+import Webring from "./Webring.astro";
 const links = [
   { href: "/", label: "home" },
   { href: "/blogs", label: "blog" },
@@ -19,19 +19,23 @@ const links = [
 
 const current = Astro.url.pathname;
 ---
+
 <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-input" />
 <label for="sidebar-toggle" class="sidebar-handle">≡</label>
 
 <aside class="sidebar">
   <nav>
     <ul>
-      {links.map((l) => (
-        <li>
-          <a href={l.href} class={current === l.href ? "active" : ""}>
-            {current === l.href ? "> " : ""}{l.label}
-          </a>
-        </li>
-      ))}
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} class={current === l.href ? "active" : ""}>
+              {current === l.href ? "> " : ""}
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
     <Webring />
   </nav>

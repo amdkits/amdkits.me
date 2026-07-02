@@ -1,31 +1,32 @@
 ---
-import Base from '../layouts/Base.astro';
-import '../styles/pages_index.css';
-import { getCollection } from 'astro:content';
+import Base from "../layouts/Base.astro";
+import "../styles/pages_index.css";
+import { getCollection } from "astro:content";
 
 // 1. Fetch all posts from the unified collection
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 
 // 2. Sort them by date (newest first)
-const updates = allPosts.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
+const updates = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
+
 <Base title="home">
   <div class="updates">
     <h2>updates</h2>
     <ul>
-      {updates.map((u) => (
-        <li>
-          <span class="date">{u.data.date}</span>
-          <span class="sep">·</span>
-          {/* Dynamically build the URL using the category and filename */}
-          <a href={`/${u.data.category}/${u.id}`}>
-            <span class="tag">[{u.data.tag}]</span>
-            <span class="label">{u.data.title}</span>
-          </a>
-        </li>
-      ))}
+      {
+        updates.map((u) => (
+          <li>
+            <span class="date">{u.data.date}</span>
+            <span class="sep">·</span>
+            {/* Dynamically build the URL using the category and filename */}
+            <a href={`/${u.data.category}/${u.id}`}>
+              <span class="tag">[{u.data.tag}]</span>
+              <span class="label">{u.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </Base>

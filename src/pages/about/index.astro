@@ -1,10 +1,11 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { getEntry, render } from 'astro:content';
+import Base from "../../layouts/Base.astro";
+import { getEntry, render } from "astro:content";
 
-const entry = await getEntry('about', 'about');
+const entry = await getEntry("about", "about");
 const { Content } = entry ? await render(entry) : { Content: null };
 ---
+
 <Base title="about">
   <div class="updates">
     <h2>about</h2>

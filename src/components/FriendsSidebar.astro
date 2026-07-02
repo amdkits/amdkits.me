@@ -2,8 +2,16 @@
 // src/components/FriendsWindow.astro
 
 const friendBadges = [
-  { name: "melqtx", url: "https://melqtx.com", badge: "https://melqtx.com/images/mel-88x31.png?v=0e3ee4d"},
-  { name: "prnsh", url: "https://prnsh.site", badge: "https://prnsh.site/88x31"},
+  {
+    name: "melqtx",
+    url: "https://melqtx.com",
+    badge: "https://melqtx.com/images/mel-88x31.png?v=0e3ee4d",
+  },
+  {
+    name: "prnsh",
+    url: "https://prnsh.site",
+    badge: "https://prnsh.site/88x31",
+  },
 ];
 
 const embedCode = `<a href="https://amdkits.me" title="amdkits">
@@ -20,7 +28,7 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     <div class="title-text">
       <span class="blink">@</span>friends
     </div>
-    
+
     <!-- The label acts as the minimize/maximize button -->
     <label for="window-minimize" class="control-btn">
       <span class="icon-min">[ - ]</span>
@@ -31,11 +39,13 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   <!-- Window Body -->
   <div class="window-body">
     <div class="badge-grid">
-      {friendBadges.map((friend) => (
-        <a href={friend.url} target="_blank" title={friend.name}>
-          <img src={friend.badge} alt={`${friend.name} badge`} class="pixel-art" width="88" height="31" />
-        </a>
-      ))}
+      {
+        friendBadges.map((friend) => (
+          <a href={friend.url} target="_blank" title={friend.name}>
+            <img src={friend.badge} alt={`${friend.name} badge`} class="pixel-art" width="88" height="31" />
+          </a>
+        ))
+      }
     </div>
 
     <div class="divider"></div>
@@ -57,7 +67,7 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   .os-window {
     position: fixed;
     /* Adjusted so the title bar doesn't jump when minimized */
-    bottom: 60px; 
+    bottom: 60px;
     right: 20px;
     width: 260px;
     background: var(--bg);
@@ -72,7 +82,7 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--konata-blue-soft); 
+    background: var(--konata-blue-soft);
     color: var(--bg);
     padding: 3px 8px;
     font-weight: bold;
@@ -85,7 +95,9 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   }
 
   @keyframes blinker {
-    50% { opacity: 0; }
+    50% {
+      opacity: 0;
+    }
   }
 
   /* Minimize Button Base */
@@ -94,7 +106,9 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     font-size: 0.85rem;
     padding: 0 4px;
     user-select: none;
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
 
   .control-btn:hover {
@@ -112,9 +126,9 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
     padding: 15px;
     background: var(--bg);
     /* Prevents window from growing too tall */
-    max-height: 50vh; 
+    max-height: 50vh;
     /* Enables scrolling when you have many friends */
-    overflow-y: auto; 
+    overflow-y: auto;
   }
 
   /* Custom Scrollbar for the retro vibe */
@@ -130,7 +144,7 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   }
 
   /* --- MINIMIZE LOGIC --- */
-  
+
   /* 1. Hide the body when minimized */
   .window-toggle:checked ~ .os-window .window-body {
     display: none;
@@ -140,7 +154,7 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   .window-toggle:checked ~ .os-window {
     box-shadow: none;
     /* Maintain the exact same bottom position so it stays still */
-    bottom: 60px; 
+    bottom: 60px;
     border-bottom: 1px solid var(--border);
   }
 
@@ -150,8 +164,8 @@ const embedCode = `<a href="https://amdkits.me" title="amdkits">
   }
   .window-toggle:checked ~ .os-window .icon-max {
     display: inline;
-  }  
-  
+  }
+
   /* Content Styling */
   .badge-grid {
     display: grid;
