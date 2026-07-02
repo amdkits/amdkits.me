@@ -1,43 +1,26 @@
-# Astro Starter Kit: Minimal
+# > amdkits.me
 
-```sh
-npm create astro@latest -- --template minimal
-```
+The source code for my personal corner of the internet. A minimalist, fully static website built with [Astro](https://astro.build), designed to mimic the aesthetic of a custom Linux window manager and early-web retro interfaces.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Features
 
-## 🚀 Project Structure
+* **Terminal-Inspired UI:** Dark mode by default, utilizing classic monospaced typography, micro-pixel fonts, and sharp 1px borders.
+* **Custom Window Manager Elements:** Features a custom `.exe` style floating window for webring navigation and peer networking.
+* **Lightweight:** Ships zero client-side JavaScript by default.
+* **Pixel Art Integration:** Built to natively support and perfectly render classic 88x31 web badges and blinkies without anti-aliasing blur.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Tech Stack
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+* **Framework:** [Astro](https://astro.build/)
+* **Package Manager:** `pnpm`
+* **Styling:** Vanilla CSS (CSS Variables for theming)
+* **Formatting:** Prettier (with `prettier-plugin-astro`)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Local Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+To run this site on your local machine, ensure you have Node.js and `pnpm` installed.
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/yourusername/amdkits.git](https://github.com/yourusername/amdkits.git)
+   cd amdkits
