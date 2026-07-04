@@ -1,0 +1,208 @@
+---
+import Base from "../layouts/Base.astro";
+import Sidebar from "../components/sidebar.astro";
+import FriendsSidebar from "../components/FriendsSidebar.astro";
+---
+
+<Base title="~/garden - amdkits network">
+  <Sidebar />
+  <h1>Still under development</h1>
+  <div class="terminal-container">
+    <header class="sys-header">
+      <pre>
+    __  ___      __                      __   
+   /  |/  /___ _/ /_  _____  ____  ___  / /_  
+  / /|_/ / __ `/ __ \/ ___/ / __ \/ _ \/ __/  
+ / /  / / /_/ / /_/ (__  ) / / / /  __/ /_    
+/_/  /_/\__,_/_.___/____(_)_/ /_/\___/\__/    
+      </pre>
+      <p class="sys-info">OS: amdkits-web | HOST: garden.node | STATUS: interconnected</p>
+    </header>
+
+    <section class="node-directory">
+      <div class="section-title">
+        <span>@</span> ls -l ./external_nodes
+      </div>
+
+      <!-- Foxwell's Garden Node -->
+      <div class="webring-node">
+        <div class="node-meta">
+          <span class="bracket">[</span> FOXWELL'S GARDEN <span class="bracket">]</span>
+          <span class="status-indicator online">:: active</span>
+        </div>
+        <div class="node-content">
+          <p class="node-desc">A decentralized index of digital gardens and personal sites.</p>
+          <div class="ring-controls">
+            <a href="https://foxwells.garden/webring/prev?site=amdkits" class="ring-btn">&lt;&lt; prev</a>
+
+            <a href="https://foxwells.garden" title="Foxwell's Garden">
+              <img
+                src="https://foxwells.garden/button.png"
+                class="pixel-art badge"
+                alt="Foxwells Garden"
+                width="88"
+                height="31"
+              />
+            </a>
+
+            <a href="https://foxwells.garden/webring/next?site=amdkits" class="ring-btn">next &gt;&gt;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMDKITS Network Node -->
+      <div class="webring-node">
+        <div class="node-meta">
+          <span class="bracket">[</span> AMDKITS NETWORK <span class="bracket">]</span>
+          <span class="status-indicator self">:: localhost</span>
+        </div>
+        <div class="node-content">
+          <p class="node-desc">The local network ring. Peer-to-peer connections.</p>
+          <div class="ring-controls">
+            <a href="https://amdkits.me/webring/prev" class="ring-btn">&lt;&lt; prev</a>
+
+            <a href="https://amdkits.me" title="amdkits">
+              <img src="/kits.gif" class="pixel-art badge" alt="amdkits network" width="88" height="31" />
+            </a>
+
+            <a href="https://amdkits.me/webring/next" class="ring-btn">next &gt;&gt;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .terminal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: "Courier New", monospace;
+  }
+
+  /* ASCII Header */
+  .sys-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  .sys-header pre {
+    color: var(--konata-blue-soft);
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    /* Keeps ASCII art from breaking on small screens */
+    overflow-x: auto;
+  }
+
+  .sys-info {
+    font-size: 0.75rem;
+    color: var(--border);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Directory Styles */
+  .section-title {
+    font-weight: bold;
+    color: var(--konata-blue-soft);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .section-title span {
+    animation: blinker 1s step-end infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Individual Webring Nodes */
+  .webring-node {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  /* Draws a small visual "connection" line on the left */
+  .webring-node::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 15px;
+    width: 15px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .node-meta {
+    background: var(--border); /* Using border color as a muted background */
+    color: var(--bg);
+    padding: 0.2rem 0.8rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+  }
+
+  .bracket {
+    color: var(--konata-blue-soft);
+  }
+
+  .status-indicator {
+    font-size: 0.75rem;
+  }
+  .status-indicator.online {
+    color: #a3be8c; /* Muted terminal green */
+  }
+  .status-indicator.self {
+    color: var(--konata-blue-soft);
+  }
+
+  .node-content {
+    padding: 1.5rem;
+  }
+
+  .node-desc {
+    font-size: 0.85rem;
+    color: #c0c0c0; /* Classic terminal grey text */
+    margin-bottom: 1.5rem;
+  }
+
+  /* Ring Control Layout */
+  .ring-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ring-btn {
+    text-decoration: none;
+    color: var(--konata-blue-soft);
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .ring-btn:hover {
+    background: var(--konata-blue-soft);
+    color: var(--bg);
+    border-color: var(--konata-blue-soft);
+  }
+
+  .badge {
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .badge:hover {
+    border-color: var(--konata-blue-soft);
+  }
+</style>

@@ -1,5 +1,4 @@
 ---
-import Webring from "./Webring.astro";
 const links = [
   { href: "/", label: "home" },
   { href: "/blogs", label: "blog" },
@@ -37,7 +36,6 @@ const current = Astro.url.pathname;
         ))
       }
     </ul>
-    <Webring />
   </nav>
 </aside>
 
