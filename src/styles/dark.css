@@ -61,15 +61,12 @@ body {
 
 .ascii-logo {
   margin: 0;
-
-  font-family: monospace;
+  font-family: "Cascadia Code", "JetBrains Mono", "DejaVu Sans Mono", "Consolas", monospace;
   white-space: pre;
-
-  font-size: 1.0rem;
+  font-size: 16px; /* fixed px, not rem */
   line-height: 1;
-
   color: var(--konata-blue-soft);
-
+  overflow-x: auto; /* safety net on narrow viewports */
   transition:
     transform 0.15s ease,
     color 0.15s ease;
