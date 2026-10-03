@@ -5,3 +5,4 @@ description: Testing the new blog pipeline.
 ---
 
 This is a test.
+And test is bad.
