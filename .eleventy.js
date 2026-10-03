@@ -1,6 +1,10 @@
 export default function(eleventyConfig) {
   eleventyConfig.addFilter('rssDate', value => new Date(value).toUTCString());
 
+  eleventyConfig.addFilter('postDate', value => {
+    const date = new Date(value);
+    return date.toISOString().slice(0, 10);
+  });
   // Static assets
   for (const [from, to] of [
     ['src/styles.css','styles.css'],
