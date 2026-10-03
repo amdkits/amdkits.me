@@ -1,6 +1,6 @@
 ---
 title: real mode boot sector notes
-date: "2026-06-20"
+date: '2026-06-20'
 tag: OS
 category: blogs
 permalink: /blogs/boot-sector-notes/

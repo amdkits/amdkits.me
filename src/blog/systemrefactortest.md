@@ -1,6 +1,6 @@
 ---
 title: System Refactor Test
-date: "2026-07-01"
+date: '2026-07-01'
 tag: dev
 category: blogs
 permalink: /blogs/systemrefactortest/
@@ -8,9 +8,10 @@ permalink: /blogs/systemrefactortest/
 
 # It works!
 
-If you can see this post at `/blogs/testing-refactor`, your unified routing system is fully operational. 
+If you can see this post at `/blogs/testing-refactor`, your unified routing system is fully operational.
 
 This post proves that:
+
 1. The **`posts` collection** is correctly configured in `content.config.ts`.
 2. The **Universal Route `[category]/[slug].astro`** is successfully catching the request.
 3. The **`category` frontmatter** is driving the URL structure.

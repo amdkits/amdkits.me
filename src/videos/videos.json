@@ -1,1 +1,5 @@
-{"layout":"layouts/post.njk","permalink":"/youtube/{{ page.fileSlug }}/","tag":"youtube"}
+{
+  "layout": "layouts/post.njk",
+  "permalink": "/youtube/{{ page.fileSlug }}/",
+  "tag": "youtube"
+}

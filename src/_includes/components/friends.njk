@@ -1,3 +1,87 @@
-<input type="checkbox" id="window-minimize" class="window-toggle"><div class="os-window"><div class="title-bar"><div class="title-text"><span class="blink">@</span>friends</div><label for="window-minimize" class="control-btn"><span class="icon-min">[ - ]</span><span class="icon-max">[ + ]</span></label></div><div class="window-body"><div class="badge-grid">{% for f in site.friends %}<a href="{{ f[1] }}" target="_blank" rel="noopener" title="{{ f[0] }}"><img src="{{ f[2] }}" alt="{{ f[0] }} badge" class="pixel-art" width="88" height="31"></a>{% endfor %}</div><div class="divider"></div><section class="ring-box"><div class="ring-heading"><span>webring</span><div class="ring-switch"><button type="button" id="ring-prev">&lt;</button><span id="ring-label">foxwell's garden</span><button type="button" id="ring-next">&gt;</button></div></div><div class="ring-nav"><a id="ring-prev-link">&lt;&lt;</a><a id="ring-home" target="_blank" rel="noopener"><img id="ring-badge" width="88" height="31" alt="webring"></a><a id="ring-next-link">&gt;&gt;</a></div><p class="ring-help" id="ring-help">foxwell's garden · prev / next</p></section><div class="divider"></div><div class="my-badge-container"><img src="/kits.gif" alt="amdkits blinkie" class="pixel-art" width="88" height="31"></div><textarea class="code-box" readonly onclick="this.select()">&lt;a href="https://amdkits.me" title="amdkits"&gt;
+<input type="checkbox" id="window-minimize" class="window-toggle">
+
+<div class="os-window">
+  <div class="title-bar">
+    <div class="title-text">
+      <span class="blink">@</span>friends
+    </div>
+
+    <label for="window-minimize" class="control-btn">
+      <span class="icon-min">[ - ]</span>
+      <span class="icon-max">[ + ]</span>
+    </label>
+  </div>
+
+  <div class="window-body">
+
+    <div class="badge-grid">
+      {% for f in site.friends %}
+        <a href="{{ f[1] }}" target="_blank" rel="noopener" title="{{ f[0] }}">
+          <img
+            src="{{ f[2] }}"
+            alt="{{ f[0] }} badge"
+            class="pixel-art"
+            width="88"
+            height="31"
+          >
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="divider"></div>
+
+    <section class="ring-box">
+      <div class="ring-heading">
+        <span>webring</span>
+
+        <div class="ring-switch">
+          <button type="button" id="ring-prev">&lt;</button>
+          <span id="ring-label">foxwell's garden</span>
+          <button type="button" id="ring-next">&gt;</button>
+        </div>
+      </div>
+
+      <div class="ring-nav">
+        <a id="ring-prev-link">&lt;&lt;</a>
+
+        <a id="ring-home" target="_blank" rel="noopener">
+          <img
+            id="ring-badge"
+            width="88"
+            height="31"
+            alt="webring"
+          >
+        </a>
+
+        <a id="ring-next-link">&gt;&gt;</a>
+      </div>
+
+      <p class="ring-help" id="ring-help">
+        foxwell's garden · prev / next
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="my-badge-container">
+      <img
+        src="/kits.gif"
+        alt="amdkits blinkie"
+        class="pixel-art"
+        width="88"
+        height="31"
+      >
+    </div>
+
+    <textarea class="code-box" readonly onclick="this.select()">&lt;a href="https://amdkits.me" title="amdkits"&gt;
   &lt;img src="https://amdkits.me/kits.gif" alt="amdkits" width="88" height="31"&gt;
-&lt;/a&gt;</textarea></div></div><script>window.amdRings={{ site.rings | dump | safe }};</script><script src="/webrings.js" defer></script>
+&lt;/a&gt;</textarea>
+
+  </div>
+</div>
+
+<script>
+  window.amdRings = {{ rings | dump | safe }};
+</script>
+
+<script src="/webrings.js" defer></script>

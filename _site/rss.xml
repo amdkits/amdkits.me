@@ -13,6 +13,13 @@
     </item>
     
     <item>
+      <title>Test Post</title>
+      <link>https://amdkits.me/blog/test/</link>
+      <guid>https://amdkits.me/blog/test/</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    
+    <item>
       <title>Kafka on the Shore: A Review</title>
       <link>https://amdkits.me/literature/kafkareview/</link>
       <guid>https://amdkits.me/literature/kafkareview/</guid>

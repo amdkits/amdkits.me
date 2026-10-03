@@ -1,6 +1,6 @@
 ---
-title: "learning in public"
-updated: "2026-10-04"
+title: 'learning in public'
+updated: '2026-10-04'
 status: growing
 permalink: /garden/learning-in-public/
 ---
