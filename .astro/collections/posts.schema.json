@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "blogs",
+        "projects",
+        "literature",
+        "coding",
+        "life"
+      ]
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "date",
+    "tag",
+    "category"
+  ]
+}
