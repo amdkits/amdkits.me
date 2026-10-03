@@ -3,11 +3,11 @@ export default {
   url: 'https://amdkits.me',
   description: 'a small house on the internet',
   nav: [
-    ['/', 'home'], ['/about/', 'about'], ['/blogs/', 'blog'], ['/projects/', 'projects'],
+    ['/', 'home'], ['/about/', 'about'], ['/blog/', 'blog'], ['/projects/', 'projects'],
     ['/youtube/', 'youtube'], ['/now/', 'now'], ['/garden/', 'garden']
   ],
   sidebar: [
-    ['/', 'home'], ['/blogs/', 'blog'], ['/about/', 'about'], ['/projects/', 'projects'],
+    ['/', 'home'], ['/blog/', 'blog'], ['/about/', 'about'], ['/projects/', 'projects'],
     ['/youtube/', 'youtube'], ['/now/', 'now'], ['/library/', 'library'], ['/garden/', 'garden'],
     ['/changelog/', 'changelog'], ['/uses/', 'uses'], ['/guestbook/', 'guestbook'],
     ['/colophon/', 'colophon'], ['/contact/', 'contact'], ['/gpg/', 'gpg'], ['/rss.xml', 'rss']
