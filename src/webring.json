@@ -1,9 +1,16 @@
 {
-  "name": "Clankers Kling",
-  "description": "A collection of personal minimalist sites.",
-  "members": [
-    "https://amdkits.me",
-    "https://melqtx.com",
-    "https://prnsh.site"
+  "webrings": [
+    {
+      "name": "Foxwells Garden",
+      "url": "https://foxwells.garden/",
+      "badge": "https://foxwells.garden/img/foxwellsbadge.gif",
+      "prev": "https://foxwells.garden/webring/?prv&s=kits",
+      "next": "https://foxwells.garden/webring/?nxt&s=kits",
+      "random": "https://foxwells.garden/webring/?rnd"
+    },
+    {
+      "name": "kan.sh Webring",
+      "url": "https://ring.kan.sh/"
+    }
   ]
 }
