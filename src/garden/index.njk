@@ -1,0 +1,6 @@
+---
+layout: layouts/base.njk
+title: garden
+permalink: /garden/
+---
+<section class="content page-content garden"><header><h1>garden</h1><p>A collection of unfinished thoughts, notes, rabbit holes, and things that may eventually become something else.</p></header><div class="notes">{% for note in collections.garden | reverse %}<a href="{{ note.url }}"><span class="status {{ note.data.status }}">{{ note.data.status }}</span><strong>{{ note.data.title }}</strong><time>{{ note.data.updated }}</time></a>{% endfor %}</div><div class="network"><h2>network</h2><p><a href="https://foxwells.garden">foxwell's garden</a> · <a href="https://foxwells.garden/webring/?prv&s=kits">prev</a> · <a href="https://foxwells.garden/webring/?nxt&s=kits">next</a></p><img src="/kits.gif" alt="amdkits 88x31 badge" width="88" height="31"></div></section>

@@ -1,0 +1,6 @@
+---
+layout: layouts/base.njk
+title: home
+permalink: /
+---
+<div class="updates"><h2>updates</h2><ul>{% for item in collections.updates %}<li><span class="date">{{ item.data.date }}</span><span class="sep">·</span><a href="{{ item.url }}"><span class="tag">[{{ item.data.tag or 'youtube' }}]</span> <span class="label">{{ item.data.title }}</span></a></li>{% endfor %}</ul></div>

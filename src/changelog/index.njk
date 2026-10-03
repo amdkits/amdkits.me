@@ -1,0 +1,6 @@
+---
+layout: layouts/base.njk
+title: changelog
+permalink: /changelog/
+---
+<section class="content page-content"><h1>changelog</h1>{% for item in collections.changelog | reverse %}<a class="change" href="{{ item.url }}"><span>{{ item.data.date }}</span><strong>{{ item.data.title }}</strong></a>{% endfor %}</section>

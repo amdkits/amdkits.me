@@ -1,0 +1,6 @@
+---
+layout: layouts/base.njk
+title: youtube
+permalink: /youtube/
+---
+<section class="content page-content"><h1>youtube</h1><p class="muted">videos, notes, and things I put out into the world.</p><div class="video-list">{% for video in collections.videos | reverse %}<a href="{{ video.url }}"><span>{{ video.data.date }}</span><strong>{{ video.data.title }}</strong></a>{% endfor %}</div></section>

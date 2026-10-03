@@ -1,26 +1,20 @@
-# > amdkits.me
+# amdkits.me — 11ty edition
 
-The source code for my personal corner of the internet. A minimalist, fully static website built with [Astro](https://astro.build), designed to mimic the aesthetic of a custom Linux window manager and early-web retro interfaces.
+A deliberately small static remake of amdkits.me. It keeps the terminal/old-web aesthetic, friends window, webrings, music player, oneko, blogs, garden, YouTube, changelog, uses, colophon, contact, GPG and guestbook UI.
 
-## Features
+## Local
 
-* **Terminal-Inspired UI:** Dark mode by default, utilizing classic monospaced typography, micro-pixel fonts, and sharp 1px borders.
-* **Custom Window Manager Elements:** Features a custom `.exe` style floating window for webring navigation and peer networking.
-* **Lightweight:** Ships zero client-side JavaScript by default.
-* **Pixel Art Integration:** Built to natively support and perfectly render classic 88x31 web badges and blinkies without anti-aliasing blur.
+```sh
+npm install
+npm run dev
+```
 
-## 🛠️ Tech Stack
+## Build
 
-* **Framework:** [Astro](https://astro.build/)
-* **Package Manager:** `pnpm`
-* **Styling:** Vanilla CSS (CSS Variables for theming)
-* **Formatting:** Prettier (with `prettier-plugin-astro`)
+```sh
+npm run build
+```
 
-## 🚀 Local Deployment
+The finished static site is `_site/`.
 
-To run this site on your local machine, ensure you have Node.js and `pnpm` installed.
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/yourusername/amdkits.git](https://github.com/yourusername/amdkits.git)
-   cd amdkits
+See `PORTING.md` for the migration and publishing workflow.
