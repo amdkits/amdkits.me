@@ -6,7 +6,7 @@ pages_build_output_dir = "_site"
 # Settings -> Bindings -> Add -> D1 database
 # Use the variable name: DB
 # If you prefer Wrangler-managed bindings, uncomment and fill in:
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "amdkits-guestbook"
-# database_id = "YOUR_D1_DATABASE_ID"
+[[d1_databases]]
+binding = "DB"
+database_name = "amdkits-guestbook"
+database_id = "def3935a-72d7-4c22-8872-7f73bb9e392a"
