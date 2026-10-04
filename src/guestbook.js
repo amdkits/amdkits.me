@@ -44,7 +44,7 @@ if (form) {
       return;
     }
     form.reset();
-    status.textContent = 'entry added.';
+    status.textContent = d.message || 'entry submitted for approval.';
     load();
   };
   load().catch(

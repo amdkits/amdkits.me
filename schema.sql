@@ -7,3 +7,9 @@ CREATE TABLE IF NOT EXISTS guestbook (
   approved INTEGER NOT NULL DEFAULT 1
 );
 CREATE INDEX IF NOT EXISTS guestbook_created_at ON guestbook(created_at);
+
+CREATE TABLE IF NOT EXISTS guestbook_rate_limits (
+  key TEXT PRIMARY KEY,
+  count INTEGER NOT NULL,
+  window_start INTEGER NOT NULL
+);
