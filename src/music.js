@@ -1,6 +1,5 @@
 (() => {
   const player = document.querySelector('#music-player');
-
   if (!player) return;
 
   const audio = player.querySelector('#bg-audio');
@@ -10,55 +9,44 @@
   const next = player.querySelector('#music-next');
   const mute = player.querySelector('#music-mute');
   const progress = player.querySelector('#music-progress');
-  const volume = player.querySelector('#music-volume');
 
   const list = JSON.parse(player.dataset.playlist || '[]');
-
   if (!list.length) return;
 
-  const STORAGE_KEY = 'amdkits-music';
+  const KEY = 'amdkits-music';
 
-  let state;
+  let saved = {};
 
   try {
-    state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    saved = JSON.parse(localStorage.getItem(KEY)) || {};
   } catch {
-    state = {};
+    saved = {};
   }
 
-  let current = Number.isInteger(state.track) ? state.track : 0;
+  let index = Number.isInteger(saved.index) ? saved.index : 0;
 
-  if (current < 0 || current >= list.length) {
-    current = 0;
+  if (index < 0 || index >= list.length) {
+    index = 0;
   }
 
-  function saveState() {
+  function save() {
     localStorage.setItem(
-      STORAGE_KEY,
+      KEY,
       JSON.stringify({
-        track: current,
+        index,
         position: audio.currentTime || 0,
         playing: !audio.paused,
-        muted: audio.muted,
-        volume: audio.volume
+        muted: audio.muted
       })
     );
   }
 
-  function updatePlayButton() {
+  function updateButton() {
     toggle.textContent = audio.paused ? '▶' : 'Ⅱ';
-    toggle.setAttribute(
-      'aria-label',
-      audio.paused ? 'Play music' : 'Pause music'
-    );
   }
 
-  function updateMuteButton() {
-    mute.textContent = audio.muted || audio.volume === 0 ? '×' : '♪';
-    mute.setAttribute(
-      'aria-label',
-      audio.muted ? 'Unmute music' : 'Mute music'
-    );
+  function updateMute() {
+    mute.textContent = audio.muted ? '×' : '♪';
   }
 
   function updateProgress() {
@@ -70,11 +58,13 @@
     progress.value = (audio.currentTime / audio.duration) * 100;
   }
 
-  function load(index, shouldPlay = false, position = 0) {
-    current = (index + list.length) % list.length;
+  function loadSong(songIndex, autoplay = false, position = 0) {
+    index = (songIndex + list.length) % list.length;
 
-    audio.src = list[current].src;
-    title.textContent = list[current].title;
+    const song = list[index];
+
+    audio.src = song.src;
+    title.textContent = song.title;
 
     audio.addEventListener(
       'loadedmetadata',
@@ -83,16 +73,16 @@
           audio.currentTime = position;
         }
 
-        if (shouldPlay) {
-          audio.play().catch(() => {
-            updatePlayButton();
-          });
+        if (autoplay) {
+          audio.play().catch(() => {});
         }
+
+        updateProgress();
       },
       { once: true }
     );
 
-    updatePlayButton();
+    updateButton();
   }
 
   toggle.addEventListener('click', () => {
@@ -101,24 +91,20 @@
     } else {
       audio.pause();
     }
-
-    saveState();
   });
 
   prev.addEventListener('click', () => {
-    load(current - 1, true);
-    saveState();
+    loadSong(index - 1, true);
   });
 
   next.addEventListener('click', () => {
-    load(current + 1, true);
-    saveState();
+    loadSong(index + 1, true);
   });
 
   mute.addEventListener('click', () => {
     audio.muted = !audio.muted;
-    updateMuteButton();
-    saveState();
+    updateMute();
+    save();
   });
 
   progress.addEventListener('input', () => {
@@ -127,49 +113,30 @@
     audio.currentTime = (Number(progress.value) / 100) * audio.duration;
   });
 
-  volume.addEventListener('input', () => {
-    audio.volume = Number(volume.value);
-    audio.muted = audio.volume === 0;
-
-    updateMuteButton();
-    saveState();
-  });
-
   audio.addEventListener('play', () => {
-    updatePlayButton();
-    saveState();
+    updateButton();
+    save();
   });
 
   audio.addEventListener('pause', () => {
-    updatePlayButton();
-    saveState();
+    updateButton();
+    save();
   });
 
   audio.addEventListener('timeupdate', updateProgress);
 
   audio.addEventListener('ended', () => {
-    load(current + 1, true);
+    loadSong(index + 1, true);
   });
 
-  // Save playback position periodically.
-  setInterval(saveState, 2000);
+  // Remember position while listening.
+  setInterval(save, 1000);
 
-  // Save before leaving the page.
-  window.addEventListener('beforeunload', saveState);
+  // Remember state when navigating away.
+  window.addEventListener('pagehide', save);
 
-  // Restore volume.
-  if (typeof state.volume === 'number') {
-    audio.volume = Math.max(0, Math.min(1, state.volume));
-    volume.value = audio.volume;
-  } else {
-    audio.volume = 0.7;
-    volume.value = 0.7;
-  }
+  audio.muted = Boolean(saved.muted);
+  updateMute();
 
-  audio.muted = Boolean(state.muted);
-
-  updateMuteButton();
-
-  // Restore the previous song and position.
-  load(current, Boolean(state.playing), Number(state.position) || 0);
+  loadSong(index, Boolean(saved.playing), Number(saved.position) || 0);
 })();
