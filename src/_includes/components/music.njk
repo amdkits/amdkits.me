@@ -1,11 +1,73 @@
-<div id='music-player' data-playlist='{{ site.music | dump | safe }}'>
-  <audio id='bg-audio' preload='none'></audio>
-  <div class='music-controls'>
-    <button id='music-prev'>«</button>
-    <button id='music-toggle'>▶</button>
-    <button id='music-next'>»</button>
-    <button id='music-mute'>♪</button>
-    <span id='music-title'></span>
+<div
+  id="music-player"
+  class="music-player"
+  data-playlist='{{ site.music | dump | safe }}'
+>
+  <audio id="bg-audio" preload="metadata"></audio>
+
+  <div class="music-top">
+    <span class="music-label">♪ now playing</span>
+    <span id="music-title" class="music-title"></span>
+  </div>
+
+  <div class="music-controls">
+    <button
+      id="music-prev"
+      type="button"
+      aria-label="Previous song"
+    >
+      ◀◀
+    </button>
+
+    <button
+      id="music-toggle"
+      class="music-play"
+      type="button"
+      aria-label="Play music"
+    >
+      ▶
+    </button>
+
+    <button
+      id="music-next"
+      type="button"
+      aria-label="Next song"
+    >
+      ▶▶
+    </button>
+
+    <button
+      id="music-mute"
+      type="button"
+      aria-label="Mute music"
+    >
+      ♪
+    </button>
+  </div>
+
+  <div class="music-progress-row">
+    <input
+      id="music-progress"
+      class="music-progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+      aria-label="Song progress"
+    />
+
+    <input
+      id="music-volume"
+      class="music-volume"
+      type="range"
+      min="0"
+      max="1"
+      value="0.7"
+      step="0.01"
+      aria-label="Volume"
+    />
   </div>
 </div>
-<script src='/music.js' defer></script>
+
+<script src="/music.js" defer></script>

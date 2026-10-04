@@ -1242,3 +1242,105 @@ textarea {
     max-width: 12ch;
   }
 }
+
+/* Music player */
+
+.music-player {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 1rem 0;
+  padding: 0.65rem 0.75rem;
+
+  border: 1px solid var(--border, currentColor);
+  background: var(--bg-secondary, transparent);
+
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.music-top {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  min-width: 0;
+  margin-bottom: 0.55rem;
+}
+
+.music-label {
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.music-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.music-controls button {
+  min-width: 2rem;
+  height: 1.8rem;
+  padding: 0 0.45rem;
+
+  border: 1px solid var(--border, currentColor);
+  background: transparent;
+  color: inherit;
+
+  font-family: inherit;
+  font-size: 0.75rem;
+
+  cursor: pointer;
+}
+
+.music-controls button:hover {
+  background: var(--accent, currentColor);
+  color: var(--background, #fff);
+}
+
+.music-controls .music-play {
+  min-width: 2.2rem;
+  font-weight: bold;
+}
+
+.music-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.55rem;
+}
+
+.music-progress {
+  flex: 1;
+  min-width: 0;
+}
+
+.music-volume {
+  width: 4.5rem;
+}
+
+.music-player input[type='range'] {
+  height: 0.8rem;
+  accent-color: currentColor;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .music-top {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .music-controls button {
+    min-width: 2.2rem;
+  }
+
+  .music-volume {
+    width: 3.5rem;
+  }
+}
