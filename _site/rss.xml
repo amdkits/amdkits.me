@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version='2.0'>
   <channel>
     <title>amdkits</title>
-    <link>https://amdkits.me/</link>
+    <link />
+    https://amdkits.me
+    /
+    </link>
     <description>a small house on the internet</description>
     
-    <item>
-      <title>site architecture pass</title>
-      <link>https://amdkits.me/changelog/2026-10-04-site-architecture/</link>
-      <guid>https://amdkits.me/changelog/2026-10-04-site-architecture/</guid>
-      <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
-    </item>
+      <item>
+        <title>site architecture pass</title>
+        <link />
+        https://amdkits.me
+        /changelog/2026-10-04-site-architecture/
+        </link>
+        <guid>https://amdkits.me/changelog/2026-10-04-site-architecture/</guid>
+        <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+      </item>
     
-    <item>
-      <title>Test Post</title>
-      <link>https://amdkits.me/blog/test/</link>
-      <guid>https://amdkits.me/blog/test/</guid>
-      <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
-    </item>
+      <item>
+        <title>Test Post</title>
+        <link />
+        https://amdkits.me
+        /blog/test/
+        </link>
+        <guid>https://amdkits.me/blog/test/</guid>
+        <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+      </item>
     
-    <item>
-      <title>Kafka on the Shore: A Review</title>
-      <link>https://amdkits.me/literature/kafkareview/</link>
-      <guid>https://amdkits.me/literature/kafkareview/</guid>
-      <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
-    </item>
+      <item>
+        <title>Kafka on the Shore: A Review</title>
+        <link />
+        https://amdkits.me
+        /literature/kafkareview/
+        </link>
+        <guid>https://amdkits.me/literature/kafkareview/</guid>
+        <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
+      </item>
     
-    <item>
-      <title>System Refactor Test</title>
-      <link>https://amdkits.me/blogs/systemrefactortest/</link>
-      <guid>https://amdkits.me/blogs/systemrefactortest/</guid>
-      <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
-    </item>
+      <item>
+        <title>System Refactor Test</title>
+        <link />
+        https://amdkits.me
+        /blogs/systemrefactortest/
+        </link>
+        <guid>https://amdkits.me/blogs/systemrefactortest/</guid>
+        <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
+      </item>
     
-    <item>
-      <title>real mode boot sector notes</title>
-      <link>https://amdkits.me/blogs/boot-sector-notes/</link>
-      <guid>https://amdkits.me/blogs/boot-sector-notes/</guid>
-      <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
+      <item>
+        <title>real mode boot sector notes</title>
+        <link />
+        https://amdkits.me
+        /blogs/boot-sector-notes/
+        </link>
+        <guid>https://amdkits.me/blogs/boot-sector-notes/</guid>
+        <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+      </item>
     
   </channel>
 </rss>
