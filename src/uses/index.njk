@@ -3,4 +3,20 @@ layout: layouts/base.njk
 title: uses
 permalink: /uses/
 ---
-<section class="content page-content"><h1>/uses</h1>{% for x in [['editor','Neovim'],['terminal','zsh · tmux · starship'],['os','Arch Linux · KDE Plasma'],['languages','C++ · Go · JavaScript · Python'],['hardware','Lenovo Yoga · Kindle Paperwhite · Wacom CTL-472'],['site','11ty · Markdown · plain CSS']] %}<div class="use"><span>{{x[0]}}</span><strong>{{x[1]}}</strong></div>{% endfor %}</section>
+<section class="content page-content">
+  <h1>/uses</h1>
+
+  {% for x in [
+    ['editor', 'Neovim'],
+    ['terminal', 'ghostty · zsh · tmux · starship'],
+    ['os', 'Arch Linux · KDE Plasma · Sway · i3'],
+    ['languages', 'C++ · Go · C · x86_64'],
+    ['hardware', 'Lenovo Yoga · Kindle Paperwhite · Aula F75 · Moondrop Chu 2s · Salnotes Zero'],
+    ['site', '11ty · Markdown · plain CSS']
+  ] %}
+    <div class="use">
+      <span>{{ x[0] }}</span>
+      <strong>{{ x[1] }}</strong>
+    </div>
+  {% endfor %}
+</section>
