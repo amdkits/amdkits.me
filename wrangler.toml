@@ -8,5 +8,6 @@ pages_build_output_dir = "_site"
 # If you prefer Wrangler-managed bindings, uncomment and fill in:
 [[d1_databases]]
 binding = "DB"
-database_name = "amdkits-guestbook"
+database_name = "kitsweb"
 database_id = "def3935a-72d7-4c22-8872-7f73bb9e392a"
+
