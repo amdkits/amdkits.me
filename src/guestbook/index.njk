@@ -3,7 +3,68 @@ layout: layouts/base.njk
 title: guestbook
 permalink: /guestbook/
 ---
-<section class="guestbook page-content"><header class="intro"><p class="eyebrow">guestbook</p><h1>leave a trace</h1><p>Say hello, leave a link, tell me what you found interesting. No account required.</p></header><form id="guestbook-form" class="guest-form"><label><span>name</span><input name="name" maxlength="40" required autocomplete="name" placeholder="your name"></label><label><span>website <small>optional</small></span><input name="website" maxlength="200" placeholder="https://..." autocomplete="url"></label><label><span>message</span><textarea name="message" maxlength="500" required rows="5" placeholder="leave something behind..."></textarea></label><input class="honeypot" name="website_confirm" tabindex="-1" autocomplete="off">
-<input type="hidden" name="form_started_at" id="guestbook-form-started"><div class="form-row"><button type="submit">$ sign guestbook</button><p id="form-status" role="status"></p></div></form><div class="rule"><span>entries</span></div><div id="entries" class="entries"><p class="muted">loading the node...</p></div></section><script src="/guestbook.js" defer></script>
+<section class='guestbook page-content'>
+  <header class='intro'>
+    <p class='eyebrow'>guestbook</p>
+    <h1>leave a trace</h1>
+    <p>
+      Say hello, leave a link, tell me what you found interesting. No account
+      required.
+    </p>
+  </header>
+  <form id='guestbook-form' class='guest-form'>
+    <label>
+      <span>name</span>
+      <input
+        name='name'
+        maxlength='40'
+        required
+        autocomplete='name'
+        placeholder='your name'
+      />
+    </label>
+    <label>
+      <span>website <small>optional</small></span>
+      <input
+        name='website'
+        maxlength='200'
+        placeholder='https://...'
+        autocomplete='url'
+      />
+    </label>
+    <label>
+      <span>message</span>
+      <textarea
+        name='message'
+        maxlength='500'
+        required
+        rows='5'
+        placeholder='leave something behind...'
+      ></textarea>
+    </label>
+    <input
+      class='honeypot'
+      name='website_confirm'
+      tabindex='-1'
+      autocomplete='off'
+    />
+    <input id='guestbook-form-started' type='hidden' name='form_started_at' />
+    <div class='form-row'>
+      <button type='submit'>$ sign guestbook</button>
+      <p id='form-status' role='status'></p>
+    </div>
+  </form>
+  <div class='rule'>
+    <span>entries</span>
+  </div>
+  <div id='entries' class='entries'>
+    <p class='muted'>loading the node...</p>
+  </div>
+</section>
+<script src='/guestbook.js' defer></script>
 
-<script>document.getElementById("guestbook-form-started")?.setAttribute("value", Date.now());</script>
+<script>
+  document
+    .getElementById('guestbook-form-started')
+    ?.setAttribute('value', Date.now());
+</script>

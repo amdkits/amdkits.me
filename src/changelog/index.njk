@@ -3,11 +3,14 @@ layout: layouts/base.njk
 title: changelog
 permalink: /changelog/
 ---
-<section class="content page-content">
+<section class='content page-content'>
   <h1>changelog</h1>
   {% for item in collections.changelog %}
-  <a class="change" href="{{ item.url }}"><span>{{ item.data.date }}</span><strong>{{ item.data.title }}</strong></a>
+    <a class='change' href='{{ item.url }}'>
+      <span>{{ item.data.date }}</span>
+      <strong>{{ item.data.title }}</strong>
+    </a>
   {% else %}
-  <p>nothing changed yet.</p>
+    <p>nothing changed yet.</p>
   {% endfor %}
 </section>

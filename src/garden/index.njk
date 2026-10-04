@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: garden
 permalink: /garden/
 ---
-<section class="content page-content garden">
+<section class='content page-content garden'>
   <header>
     <h1>garden</h1>
     <p>
@@ -12,10 +12,10 @@ permalink: /garden/
     </p>
   </header>
 
-  <div class="notes">
+  <div class='notes'>
     {% for note in collections.garden | reverse %}
-      <a href="{{ note.url }}">
-        <span class="status {{ note.data.status }}">
+      <a href='{{ note.url }}'>
+        <span class='status {{ note.data.status }}'>
           {{ note.data.status }}
         </span>
 
@@ -26,72 +26,55 @@ permalink: /garden/
     {% endfor %}
   </div>
 
-  <div class="network">
+  <div class='network'>
     <h2>network</h2>
 
-    <div class="webring">
+    <div class='webring'>
       <p>
-        <strong>foxwell's garden</strong><br>
+        <strong>foxwell's garden</strong>
+        <br />
         <a
-          href="https://foxwells.garden/webring/?prv&s=kits"
-          target="_blank"
-          rel="noopener"
-        >
-          &lt;&lt; prev
-        </a>
+          href='https://foxwells.garden/webring/?prv&s=kits'
+          target='_blank'
+          rel='noopener'
+        >&lt;&lt; prev</a>
         ·
         <a
-          href="https://foxwells.garden/webring/"
-          target="_blank"
-          rel="noopener"
-        >
-          webring
-        </a>
+          href='https://foxwells.garden/webring/'
+          target='_blank'
+          rel='noopener'
+        >webring</a>
         ·
         <a
-          href="https://foxwells.garden/webring/?nxt&s=kits"
-          target="_blank"
-          rel="noopener"
-        >
-          next &gt;&gt;
-        </a>
+          href='https://foxwells.garden/webring/?nxt&s=kits'
+          target='_blank'
+          rel='noopener'
+        >next &gt;&gt;</a>
       </p>
     </div>
 
-    <div class="webring">
+    <div class='webring'>
       <p>
-        <strong>kanring</strong><br>
+        <strong>kanring</strong>
+        <br />
         <a
-          href="https://ring.kan.sh/members/kits/prev"
-          target="_blank"
-          rel="prev noopener"
-        >
-          &lt;&lt; prev
-        </a>
+          href='https://ring.kan.sh/members/kits/prev'
+          target='_blank'
+          rel='prev noopener'
+        >&lt;&lt; prev</a>
         ·
-        <a
-          href="https://ring.kan.sh/"
-          target="_blank"
-          rel="noopener"
-        >
+        <a href='https://ring.kan.sh/' target='_blank' rel='noopener'>
           kanring
         </a>
         ·
         <a
-          href="https://ring.kan.sh/members/kits/next"
-          target="_blank"
-          rel="next noopener"
-        >
-          next &gt;&gt;
-        </a>
+          href='https://ring.kan.sh/members/kits/next'
+          target='_blank'
+          rel='next noopener'
+        >next &gt;&gt;</a>
       </p>
     </div>
 
-    <img
-      src="/kits.gif"
-      alt="amdkits 88x31 badge"
-      width="88"
-      height="31"
-    >
+    <img src='/kits.gif' alt='amdkits 88x31 badge' width='88' height='31' />
   </div>
 </section>

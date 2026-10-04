@@ -1,1 +1,11 @@
-<div id="music-player" data-playlist='{{ site.music | dump | safe }}'><audio id="bg-audio" preload="none"></audio><div class="music-controls"><button id="music-prev">«</button><button id="music-toggle">▶</button><button id="music-next">»</button><button id="music-mute">♪</button><span id="music-title"></span></div></div><script src="/music.js" defer></script>
+<div id='music-player' data-playlist='{{ site.music | dump | safe }}'>
+  <audio id='bg-audio' preload='none'></audio>
+  <div class='music-controls'>
+    <button id='music-prev'>«</button>
+    <button id='music-toggle'>▶</button>
+    <button id='music-next'>»</button>
+    <button id='music-mute'>♪</button>
+    <span id='music-title'></span>
+  </div>
+</div>
+<script src='/music.js' defer></script>

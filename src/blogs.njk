@@ -3,13 +3,22 @@ layout: layouts/base.njk
 title: blog
 permalink: /blogs/
 ---
-<section class="updates page-content">
+<section class='updates page-content'>
   <h1>blog</h1>
   <ul>
     {% for post in collections.posts %}
-    <li><span class="date">{{ post.data.date }}</span><span class="sep"> · </span><a href="{{ post.url }}"><span class="tag">[{{ post.data.tag or 'note' }}]</span> <span class="label">{{ post.data.title }}</span></a></li>
+      <li>
+        <span class='date'>{{ post.data.date }}</span>
+        <span class='sep'>·</span>
+        <a href='{{ post.url }}'>
+          <span class='tag'>[{{ post.data.tag or 'note' }}]</span>
+          <span class='label'>{{ post.data.title }}</span>
+        </a>
+      </li>
     {% else %}
-    <li><span class="label">nothing here yet.</span></li>
+      <li>
+        <span class='label'>nothing here yet.</span>
+      </li>
     {% endfor %}
   </ul>
 </section>

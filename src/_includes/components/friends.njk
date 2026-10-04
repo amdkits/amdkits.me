@@ -1,79 +1,77 @@
-<input type="checkbox" id="window-minimize" class="window-toggle">
+<input id='window-minimize' class='window-toggle' type='checkbox' />
 
-<div class="os-window">
-  <div class="title-bar">
-    <div class="title-text">
-      <span class="blink">@</span>friends
+<div class='os-window'>
+  <div class='title-bar'>
+    <div class='title-text'>
+      <span class='blink'>@</span>
+      friends
     </div>
 
-    <label for="window-minimize" class="control-btn">
-      <span class="icon-min">[ - ]</span>
-      <span class="icon-max">[ + ]</span>
+    <label class='control-btn' for='window-minimize'>
+      <span class='icon-min'>[ - ]</span>
+      <span class='icon-max'>[ + ]</span>
     </label>
   </div>
 
-  <div class="window-body">
+  <div class='window-body'>
 
-    <div class="badge-grid">
+    <div class='badge-grid'>
       {% for f in site.friends %}
-        <a href="{{ f[1] }}" target="_blank" rel="noopener" title="{{ f[0] }}">
+        <a href='{{ f[1] }}' target='_blank' rel='noopener' title='{{ f[0] }}'>
           <img
-            src="{{ f[2] }}"
-            alt="{{ f[0] }} badge"
-            class="pixel-art"
-            width="88"
-            height="31"
-          >
+            class='pixel-art'
+            src='{{ f[2] }}'
+            alt='{{ f[0] }} badge'
+            width='88'
+            height='31'
+          />
         </a>
       {% endfor %}
     </div>
 
-    <div class="divider"></div>
+    <div class='divider'></div>
 
-    <section class="ring-box">
-      <div class="ring-heading">
+    <section class='ring-box'>
+      <div class='ring-heading'>
         <span>webring</span>
 
-        <div class="ring-switch">
-          <button type="button" id="ring-prev">&lt;</button>
-          <span id="ring-label">foxwell's garden</span>
-          <button type="button" id="ring-next">&gt;</button>
+        <div class='ring-switch'>
+          <button id='ring-prev' type='button'>&lt;</button>
+          <span id='ring-label'>foxwell's garden</span>
+          <button id='ring-next' type='button'>&gt;</button>
         </div>
       </div>
 
-      <div class="ring-nav">
-        <a id="ring-prev-link">&lt;&lt;</a>
+      <div class='ring-nav'>
+        <a id='ring-prev-link'>&lt;&lt;</a>
 
-        <a id="ring-home" target="_blank" rel="noopener">
-          <img
-            id="ring-badge"
-            width="88"
-            height="31"
-            alt="webring"
-          >
+        <a id='ring-home' target='_blank' rel='noopener'>
+          <img id='ring-badge' width='88' height='31' alt='webring' />
         </a>
 
-        <a id="ring-next-link">&gt;&gt;</a>
+        <a id='ring-next-link'>&gt;&gt;</a>
       </div>
 
-      <p class="ring-help" id="ring-help">
-        foxwell's garden · prev / next
-      </p>
+      <p id='ring-help' class='ring-help'>foxwell's garden · prev / next</p>
     </section>
 
-    <div class="divider"></div>
+    <div class='divider'></div>
 
-    <div class="my-badge-container">
+    <div class='my-badge-container'>
       <img
-        src="/kits.gif"
-        alt="amdkits blinkie"
-        class="pixel-art"
-        width="88"
-        height="31"
-      >
+        class='pixel-art'
+        src='/kits.gif'
+        alt='amdkits blinkie'
+        width='88'
+        height='31'
+      />
     </div>
 
-    <textarea class="code-box" readonly onclick="this.select()">&lt;a href="https://amdkits.me" title="amdkits"&gt;
+    <textarea
+      class='code-box'
+      readonly
+      onclick='this.select()'
+    >&lt;a href="https://amdkits.me" title="amdkits"&gt;
   &lt;img src="https://amdkits.me/kits.gif" alt="amdkits" width="88" height="31"&gt;
 &lt;/a&gt;</textarea>
 
@@ -84,4 +82,4 @@
   window.amdRings = {{ rings | dump | safe }};
 </script>
 
-<script src="/webrings.js" defer></script>
+<script src='/webrings.js' defer></script>

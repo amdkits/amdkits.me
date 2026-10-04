@@ -13,11 +13,12 @@
     "new:blog": "node scripts/new-content.mjs blog",
     "new:video": "node scripts/new-content.mjs video",
     "new:garden": "node scripts/new-content.mjs garden",
-    "format": "prettier --write \"src/**/*.{js,json,md,css,html}\""
+    "format": "prettier --write \"src/**/*.{js,json,njk,md,css,html}\""
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "prettier": "^3.9.9",
+    "prettier-plugin-nunjucks": "^0.2.3",
     "serve": "^14.2.4"
   }
 }

@@ -3,16 +3,26 @@ layout: layouts/base.njk
 title: home
 permalink: /
 ---
-<section class="updates">
+<section class='updates'>
   <h2>updates</h2>
   <ul>
-    {% for item in collections.updates %}{% if loop.index0 < 8 %}
-    <li>
-      <span class="date">{{ item.data.date }}</span><span class="sep"> · </span>
-      <a href="{{ item.url }}"><span class="tag">[{{ item.data.tag or ('changelog' if item.data.summary else 'note') }}]</span> <span class="label">{{ item.data.title }}</span></a>
-    </li>{% endif %}
+    {% for item in collections.updates %}
+      {% if loop.index0 < 8 %}
+        <li>
+          <span class='date'>{{ item.data.date }}</span>
+          <span class='sep'>·</span>
+          <a href='{{ item.url }}'>
+            <span
+              class='tag'
+            >[{{ item.data.tag or ('changelog' if item.data.summary else 'note') }}]</span>
+            <span class='label'>{{ item.data.title }}</span>
+          </a>
+        </li>
+      {% endif %}
     {% else %}
-    <li><span class="label">no updates yet.</span></li>
+      <li>
+        <span class='label'>no updates yet.</span>
+      </li>
     {% endfor %}
   </ul>
 </section>
