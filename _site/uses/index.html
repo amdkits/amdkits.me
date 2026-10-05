@@ -17,16 +17,37 @@
   <body>
     <div id='oneko'></div>
     <script src='/oneko.js'></script>
-    <div id='music-player' data-playlist='[{"src":"/music/kiki_deliv_service.mp3","title":"Kiki Delivery Service"},{"src":"/music/tonight_fahhh.mp3","title":"tonight fahhh"}]'>
-  <audio id='bg-audio' preload='none'></audio>
-  <div class='music-controls'>
-    <button id='music-prev'>«</button>
-    <button id='music-toggle'>▶</button>
-    <button id='music-next'>»</button>
-    <button id='music-mute'>♪</button>
+    <div
+  id='music-player'
+  class='music-player'
+  data-playlist='[{"src":"/music/kiki_deliv_service.mp3","title":"Kiki Delivery Service"},{"src":"/music/tonight_fahhh.mp3","title":"tonight fahhh"}]'
+>
+  <audio id='bg-audio' preload='metadata'></audio>
+
+  <div class='music-row'>
+    <button id='music-prev' type='button' aria-label='Previous song'>«</button>
+
+    <button id='music-toggle' type='button' aria-label='Play music'>▶</button>
+
+    <button id='music-next' type='button' aria-label='Next song'>»</button>
+
+    <button id='music-mute' type='button' aria-label='Mute music'>♪</button>
+
     <span id='music-title'></span>
   </div>
+
+  <input
+    id='music-progress'
+    class='music-progress'
+    type='range'
+    min='0'
+    max='100'
+    value='0'
+    step='0.1'
+    aria-label='Song progress'
+  />
 </div>
+
 <script src='/music.js' defer></script>
 
     <input id='sidebar-toggle' class='sidebar-toggle-input' type='checkbox' />

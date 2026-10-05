@@ -21,7 +21,7 @@
   
     
       <url>
-        <loc>https://amdkits.me/blog/test/</loc>
+        <loc>https://amdkits.me/philosophy/prolific/</loc>
       </url>
     
   
@@ -33,13 +33,73 @@
   
     
       <url>
+        <loc>https://amdkits.me/blogs/</loc>
+      </url>
+    
+  
+    
+      <url>
         <loc>https://amdkits.me/404.html</loc>
       </url>
     
   
     
       <url>
+        <loc>https://amdkits.me/blog/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/about/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/changelog/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/colophon/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/contact/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/garden/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/garden/learning-in-public/</loc>
+      </url>
+    
+  
+    
+      <url>
         <loc>https://amdkits.me/gpg/</loc>
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://amdkits.me/guestbook/</loc>
       </url>
     
   
@@ -57,61 +117,7 @@
   
     
       <url>
-        <loc>https://amdkits.me/contact/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/garden/learning-in-public/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/blog/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/changelog/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/guestbook/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/</loc>
-      </url>
-    
-  
-    
-      <url>
         <loc>https://amdkits.me/projects/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/youtube/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/about/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/blogs/</loc>
       </url>
     
   
@@ -123,13 +129,7 @@
   
     
       <url>
-        <loc>https://amdkits.me/colophon/</loc>
-      </url>
-    
-  
-    
-      <url>
-        <loc>https://amdkits.me/garden/</loc>
+        <loc>https://amdkits.me/youtube/</loc>
       </url>
     
   

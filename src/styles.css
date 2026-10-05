@@ -44,14 +44,15 @@ a {
 .ascii-logo {
   margin: 0;
   font:
-    16px/1 'Cascadia Code',
+    11px/1 'Cascadia Code',
     'JetBrains Mono',
     'DejaVu Sans Mono',
     Consolas,
     monospace;
   white-space: pre;
   color: var(--konata-blue-soft);
-  overflow-x: auto;
+  max-width: 100%;
+  overflow: hidden;
 }
 .ascii-link:hover .ascii-logo {
   color: #fff;
@@ -937,10 +938,9 @@ textarea {
 
   .ascii-logo {
     max-width: 100%;
-    font-size: clamp(7px, 2.25vw, 13px);
+    font-size: clamp(7px, 1.7vw, 11px);
     line-height: 1.05;
-    overflow-x: auto;
-    scrollbar-width: thin;
+    overflow: hidden;
   }
 
   .window {
