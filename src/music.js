@@ -1,4 +1,7 @@
 (() => {
+  if (window.__amdkitsMusicInitialized) return;
+  window.__amdkitsMusicInitialized = true;
+
   const player = document.querySelector('#music-player');
   if (!player) return;
 

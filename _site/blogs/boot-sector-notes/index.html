@@ -44,7 +44,225 @@
 
 <script src='/music.js' defer></script>
 
-    <main class='post'>
+    <input id='sidebar-toggle' class='sidebar-toggle-input' type='checkbox' />
+<label class='sidebar-handle' for='sidebar-toggle' aria-label='Open navigation'>
+  ≡
+</label>
+<aside class='sidebar'>
+  <nav>
+    <ul>
+      
+        <li>
+          <a href='/'>home</a>
+        </li>
+      
+        <li>
+          <a href='/blog/'>blog</a>
+        </li>
+      
+        <li>
+          <a href='/about/'>about</a>
+        </li>
+      
+        <li>
+          <a href='/projects/'>projects</a>
+        </li>
+      
+        <li>
+          <a href='/youtube/'>youtube</a>
+        </li>
+      
+        <li>
+          <a href='/now/'>now</a>
+        </li>
+      
+        <li>
+          <a href='/library/'>library</a>
+        </li>
+      
+        <li>
+          <a href='/garden/'>garden</a>
+        </li>
+      
+        <li>
+          <a href='/changelog/'>changelog</a>
+        </li>
+      
+        <li>
+          <a href='/uses/'>uses</a>
+        </li>
+      
+        <li>
+          <a href='/guestbook/'>guestbook</a>
+        </li>
+      
+        <li>
+          <a href='/colophon/'>colophon</a>
+        </li>
+      
+        <li>
+          <a href='/contact/'>contact</a>
+        </li>
+      
+        <li>
+          <a href='/gpg/'>gpg</a>
+        </li>
+      
+        <li>
+          <a href='/rss.xml'>rss</a>
+        </li>
+      
+    </ul>
+  </nav>
+</aside>
+
+    <input id='window-minimize' class='window-toggle' type='checkbox' />
+
+<div class='os-window'>
+  <div class='title-bar'>
+    <div class='title-text'>
+      <span class='blink'>@</span>
+      friends
+    </div>
+
+    <label class='control-btn' for='window-minimize'>
+      <span class='icon-min'>[ - ]</span>
+      <span class='icon-max'>[ + ]</span>
+    </label>
+  </div>
+
+  <div class='window-body'>
+
+    <div class='badge-grid'>
+      
+        <a href='https://vmfunc.re' target='_blank' rel='noopener' title='vmfunc'>
+          <img
+            class='pixel-art'
+            src='https://vmfunc.re/button.png'
+            alt='vmfunc badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+        <a href='https://c7.pm' target='_blank' rel='noopener' title='cynthia'>
+          <img
+            class='pixel-art'
+            src='https://c7.pm/img/c7-badge.png'
+            alt='cynthia badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+        <a href='https://utsuho.rocks' target='_blank' rel='noopener' title='utsuhorocks'>
+          <img
+            class='pixel-art'
+            src='/friendsbadges/utsuhorocks.png'
+            alt='utsuhorocks badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+        <a href='https://melqtx.com' target='_blank' rel='noopener' title='melqtx'>
+          <img
+            class='pixel-art'
+            src='https://melqtx.com/images/mel-88x31.png?v=0e3ee4d'
+            alt='melqtx badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+        <a href='https://prnsh.site' target='_blank' rel='noopener' title='prnsh'>
+          <img
+            class='pixel-art'
+            src='https://prnsh.site/88x31'
+            alt='prnsh badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+        <a href='https://namishh.com' target='_blank' rel='noopener' title='namishh'>
+          <img
+            class='pixel-art'
+            src='https://namishh.com/static/images/button_nam.png'
+            alt='namishh badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+        <a href='https://anemoia.moe' target='_blank' rel='noopener' title='Vinci'>
+          <img
+            class='pixel-art'
+            src='https://anemoia.moe/images/buttons/footer/jesx.gif'
+            alt='Vinci badge'
+            width='88'
+            height='31'
+          />
+        </a>
+      
+    </div>
+
+    <div class='divider'></div>
+
+    <section class='ring-box'>
+      <div class='ring-heading'>
+        <span>webring</span>
+
+        <div class='ring-switch'>
+          <button id='ring-prev' type='button'>&lt;</button>
+          <span id='ring-label'>foxwell's garden</span>
+          <button id='ring-next' type='button'>&gt;</button>
+        </div>
+      </div>
+
+      <div class='ring-nav'>
+        <a id='ring-prev-link'>&lt;&lt;</a>
+
+        <a id='ring-home' target='_blank' rel='noopener'>
+          <img id='ring-badge' width='88' height='31' alt='webring' />
+        </a>
+
+        <a id='ring-next-link'>&gt;&gt;</a>
+      </div>
+
+      <p id='ring-help' class='ring-help'>foxwell's garden · prev / next</p>
+    </section>
+
+    <div class='divider'></div>
+
+    <div class='my-badge-container'>
+      <img
+        class='pixel-art'
+        src='/kits.gif'
+        alt='amdkits blinkie'
+        width='88'
+        height='31'
+      />
+    </div>
+
+    <textarea
+      class='code-box'
+      readonly
+      onclick='this.select()'
+    >&lt;a href="https://amdkits.me" title="amdkits"&gt;
+  &lt;img src="https://amdkits.me/kits.gif" alt="amdkits" width="88" height="31"&gt;
+&lt;/a&gt;</textarea>
+
+  </div>
+</div>
+
+<script>
+  window.amdRings = {"webrings":[{"name":"Foxwells Garden","type":"foxwells","home":"https://foxwells.garden/webring/","prev":"https://foxwells.garden/webring/?prv&s=kits","next":"https://foxwells.garden/webring/?nxt&s=kits","random":"https://foxwells.garden/webring/?rnd","badge":"https://foxwells.garden/img/foxwellsbadge.gif","alt":"Foxwells Garden","help":"foxwells garden · prev / next"},{"name":"kanring","type":"kanring","home":"https://ring.kan.sh/","prev":"https://ring.kan.sh/members/kits/prev","next":"https://ring.kan.sh/members/kits/next","badge":"https://ring.kan.sh/assets/kanring.svg","alt":"kanring","help":"kanring · prev / next"}]};
+</script>
+
+<script src='/webrings.js' defer></script>
+
+    <main id='site-content' class='post'>
       <a class='post-back' href='/'>← back home?</a>
       <header class='post-header'>
         <span class='post-tag'>[OS]</span>
@@ -70,5 +288,6 @@ is proven — every future post is just a new file like this one, nothing
 else to touch.</p>
 </article>
     </main>
+    <script src='/navigation.js'></script>
   </body>
 </html>

@@ -113,7 +113,12 @@
     );
   }
 
+  let initialized = false;
+
   function init() {
+    if (initialized) return;
+    initialized = true;
+
     const nekoEl = document.getElementById('oneko');
     if (!nekoEl) return;
 
@@ -247,8 +252,4 @@
   // Initial load
   init();
 
-  // Re-run on Astro navigation
-  document.addEventListener('astro:page-load', () => {
-    init();
-  });
 })();

@@ -12,7 +12,9 @@
     <div id='oneko'></div>
     <script src='/oneko.js'></script>
     {% include "components/music.njk" %}
-    <main class='post'>
+    {% include "components/sidebar.njk" %}
+    {% include "components/friends.njk" %}
+    <main id='site-content' class='post'>
       <a class='post-back' href='/'>← back home?</a>
       <header class='post-header'>
         <span class='post-tag'>[{{ tag or 'note' }}]</span>
@@ -35,5 +37,6 @@
       {% endif %}
       <article class='post-content'>{{ content | safe }}</article>
     </main>
+    <script src='/navigation.js'></script>
   </body>
 </html>
