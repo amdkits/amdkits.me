@@ -14,7 +14,7 @@ export default {
     ['/youtube/', 'youtube'],
     ['/now/', 'now'],
     ['/garden/', 'garden'],
-    [('/guestbook/', 'guestbook')]
+    ['/guestbook/', 'guestbook']
   ],
 
   sidebar: [
@@ -60,6 +60,6 @@ export default {
   music: [
     { src: '/music/kiki_deliv_service.mp3', title: 'Kiki Delivery Service' },
     { src: '/music/tonight_fahhh.mp3', title: 'tonight fahhh' },
-    { src: '/music/isabella_lullaby.mp3', title: "isabella's lullaby" }
+    { src: '/music/isabella_lullaby.mp3', title: 'isabella lullaby' }
   ]
 };
