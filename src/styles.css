@@ -384,6 +384,60 @@ pre {
   border-top: 1px solid var(--border);
 }
 
+/* Bookshelf: full-page layout (layouts/shelf.njk) */
+.shelf-page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 3rem 1.5rem 6rem;
+  color: var(--body);
+  font-size: 0.9rem;
+}
+.shelf-header {
+  margin: 2rem 0 0.5rem;
+}
+.shelf-intro {
+  margin: 0.3rem 0 0;
+  color: var(--body);
+  line-height: 1.6;
+}
+.shelf-page .shelf-summary {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+}
+.shelf-page .shelf {
+  margin-top: 2.2rem;
+}
+.shelf-page .shelf h2 {
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+.shelf-page .book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0 2.5rem;
+}
+.shelf-page .book {
+  grid-template-columns: 64px 1fr;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.shelf-page .book:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+.shelf-page .book-cover {
+  width: 64px;
+  height: 96px;
+}
+.shelf-page .book-title {
+  font-size: 0.92rem;
+}
+.shelf-page .book-author,
+.shelf-page .book-meta {
+  font-size: 0.78rem;
+}
+
 /* 6. Sidebar ----------------------------------------------- */
 .sidebar-toggle-input {
   display: none;
@@ -1010,6 +1064,12 @@ pre {
   }
 
   /* Posts */
+  .shelf-page {
+    padding: 4rem 0.9rem 4rem;
+  }
+  .shelf-page .book-list {
+    grid-template-columns: 1fr;
+  }
   .post {
     width: 100%;
     max-width: 100%;

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    {% include "components/head.njk" %}
+  </head>
+  <body>
+    <div id='oneko'></div>
+    <script src='/oneko.js'></script>
+    {% include "components/music.njk" %}
+    {% include "components/sidebar.njk" %}
+    {% include "components/friends.njk" %}
+    <main id='site-content' class='shelf-page'>
+      {{ content | safe }}
+    </main>
+    <script src='/navigation.js'></script>
+  </body>
+</html>

@@ -13,6 +13,7 @@ export default {
     ['/projects/', 'projects'],
     ['/youtube/', 'youtube'],
     ['/now/', 'now'],
+    ['/books/', 'books'],
     ['/garden/', 'garden'],
     ['/guestbook/', 'guestbook']
   ],
@@ -25,6 +26,7 @@ export default {
     ['/youtube/', 'youtube'],
     ['/now/', 'now'],
     ['/library/', 'library'],
+    ['/books/', 'books'],
     ['/garden/', 'garden'],
     ['/changelog/', 'changelog'],
     ['/uses/', 'uses'],
@@ -60,6 +62,6 @@ export default {
   music: [
     { src: '/music/kiki_deliv_service.mp3', title: 'Kiki Delivery Service' },
     { src: '/music/tonight_fahhh.mp3', title: 'tonight fahhh' },
-    { src: '/music/isabella_lullaby.mp3', title: 'isabella lullaby' }
+    { src: '/music/isabella_lullaby.mp3', title: "isabella's lullaby" }
   ]
 };
