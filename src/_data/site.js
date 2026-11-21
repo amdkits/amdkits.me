@@ -13,7 +13,8 @@ export default {
     ['/projects/', 'projects'],
     ['/youtube/', 'youtube'],
     ['/now/', 'now'],
-    ['/garden/', 'garden'][('/guestbook/', 'guestbook')]
+    ['/garden/', 'garden'],
+    [('/guestbook/', 'guestbook')]
   ],
 
   sidebar: [
