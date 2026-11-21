@@ -59,5 +59,6 @@ export default {
   music: [
     { src: '/music/kiki_deliv_service.mp3', title: 'Kiki Delivery Service' },
     { src: '/music/tonight_fahhh.mp3', title: 'tonight fahhh' }
+    { src: '/music/isabella_lullaby.mp3', title: 'tonight fahhh' }
   ]
 };
