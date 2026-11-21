@@ -106,11 +106,18 @@
     }
   }
 
-  async function load() {
-    const res = await fetch(API, { headers: { Accept: 'application/json' } });
+  async function fetchJson(url) {
+    const res = await fetch(url, { headers: { Accept: 'application/json' } });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { code: data.error });
+    if (!res.ok || data.error) {
+      throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { code: data.error });
+    }
+    return data;
+  }
 
+  const total = (d) => ['reading', 'toRead', 'read'].reduce((n, k) => n + (d[k]?.length || 0), 0);
+
+  function show(data, note) {
     for (const key of ['reading', 'toRead', 'read']) {
       fillShelf(shelvesEl.querySelector(`[data-shelf="${key}"]`), data[key] || [], key);
     }
@@ -132,10 +139,34 @@
 
     summaryEl.hidden = false;
     shelvesEl.hidden = false;
-    statusEl.textContent = data.errors?.length
-      ? 'some shelves could not be loaded from goodreads; showing what I have.'
-      : '';
-    statusEl.hidden = !statusEl.textContent;
+    statusEl.textContent = note || '';
+    statusEl.hidden = !note;
+  }
+
+  async function load() {
+    let liveError;
+    try {
+      const data = await fetchJson(API);
+      show(
+        data,
+        data.errors?.length ? 'some shelves could not be loaded from goodreads; showing what I have.' : ''
+      );
+      return;
+    } catch (err) {
+      liveError = err;
+    }
+
+    // Live feed unavailable: use the snapshot built from a Goodreads export.
+    try {
+      const snapshot = await fetchJson('/goodreads.json');
+      if (total(snapshot) > 0) {
+        show(snapshot, 'goodreads is unreachable right now; showing a saved snapshot.');
+        return;
+      }
+    } catch {
+      /* fall through */
+    }
+    throw liveError;
   }
 
   load().catch((err) => {
