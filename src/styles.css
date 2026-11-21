@@ -11,7 +11,7 @@
    8. Post layout
    9. Guestbook
    10. Music player
-   11. Responsive (<= 700px, <= 380px)
+   11. Responsive (<= 760px, <= 380px)
    ============================================================ */
 
 /* 1. Tokens ------------------------------------------------ */
@@ -42,6 +42,7 @@ body {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--bg);
   font-family: 'Courier New', monospace;
   color: var(--text);
@@ -69,11 +70,11 @@ pre {
 /* 3. Layout ------------------------------------------------ */
 .page {
   transform: translate(100px, 200px);
-  width: 500px;
+  width: 620px;
 }
 .box {
   position: relative;
-  max-width: 500px;
+  max-width: 620px;
 }
 .hero {
   display: flex;
@@ -149,7 +150,8 @@ pre {
 .navrow {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  justify-content: space-between;
+  gap: 0.2rem 1rem;
   padding: 0.4rem 0.8rem;
   border-bottom: 1px solid var(--border);
 }
@@ -157,6 +159,7 @@ pre {
   color: var(--text);
   text-decoration: none;
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 .navrow a:hover {
   color: var(--titlebar-bg);
@@ -462,6 +465,7 @@ pre {
   z-index: 9;
   width: 180px;
   height: 100vh;
+  height: 100dvh;
   padding: 3rem 0.8rem 1rem;
   background: var(--bg);
   border-right: 1px solid var(--border);
@@ -471,6 +475,16 @@ pre {
 }
 .sidebar-toggle-input:checked ~ .sidebar {
   transform: translateX(0);
+}
+.sidebar-scrim {
+  display: none;
+}
+.sidebar-toggle-input:checked ~ .sidebar-scrim {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.5);
 }
 .sidebar ul {
   list-style: none;
@@ -890,8 +904,31 @@ pre {
   cursor: pointer;
 }
 
+@media (hover: none) {
+  #oneko {
+    display: none !important;
+  }
+}
+
 /* 11. Responsive ------------------------------------------- */
-@media (max-width: 700px) {
+@media (max-width: 760px) {
+  /* Page is a column: content, then the friends window at the bottom. */
+  body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3.75rem; /* room for the fixed menu button + music player */
+  }
+  #site-content {
+    order: 1;
+    width: 100%;
+  }
+  .window {
+    backdrop-filter: none;
+  }
+  .navbar {
+    filter: none;
+  }
+
   .page {
     transform: none;
     width: 100%;
@@ -909,7 +946,7 @@ pre {
     overflow: hidden;
   }
   .ascii-logo {
-    font-size: clamp(7px, 1.7vw, 11px);
+    font-size: clamp(8px, 2.6vw, 11px);
     line-height: 1.05;
   }
   .titlebar {
@@ -918,24 +955,25 @@ pre {
 
   .navrow {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
     padding: 0;
   }
   .navrow a {
     display: block;
-    min-height: 42px;
+    min-height: 40px;
     padding: 0.7rem 0.55rem;
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    font-size: 0.78rem;
+    font-size: 0.82rem;
+    text-align: center;
   }
 
   .updates,
   .content {
     margin: 0.5rem;
     padding: 0.75rem;
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
   .updates {
     max-height: none;
@@ -945,12 +983,13 @@ pre {
     overflow-wrap: anywhere;
   }
   .page-content p {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
 
   .feed li {
     display: block;
     padding: 0.55rem 0;
+    font-size: 0.9rem;
     line-height: 1.5;
   }
   .feed .date {
@@ -971,6 +1010,7 @@ pre {
     grid-template-columns: 1fr;
     gap: 0.2rem;
     padding: 0.7rem 0;
+    font-size: 0.88rem;
   }
   .notes time {
     text-align: left;
@@ -1001,13 +1041,13 @@ pre {
     padding: 0.7rem 0.5rem;
   }
 
-  /* Friends window: fit the viewport, sit bottom-left. */
+  /* Friends window: normal block at the bottom, not floating over content. */
   .os-window {
-    left: 0.5rem;
-    right: auto;
-    bottom: 0.5rem;
-    width: min(300px, calc(100vw - 1rem));
-    max-width: calc(100vw - 1rem);
+    position: static;
+    order: 2;
+    width: auto;
+    margin: 0.5rem 0.75rem 1.5rem;
+    box-shadow: none;
   }
   .window-body {
     padding: 10px;
@@ -1065,10 +1105,20 @@ pre {
 
   /* Posts */
   .shelf-page {
-    padding: 4rem 0.9rem 4rem;
+    width: 100%;
+    padding: 1rem 0.9rem 4rem;
   }
   .shelf-page .book-list {
     grid-template-columns: 1fr;
+  }
+  .shelf-page .book {
+    grid-template-columns: 48px 1fr;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+  }
+  .shelf-page .book-cover {
+    width: 48px;
+    height: 72px;
   }
   .post {
     width: 100%;
@@ -1083,7 +1133,7 @@ pre {
     overflow-wrap: anywhere;
   }
   .post-content {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     overflow-wrap: anywhere;
   }
   .post-content pre {
@@ -1131,7 +1181,7 @@ pre {
     padding: 0.5rem 0;
   }
   .ascii-logo {
-    font-size: 7px;
+    font-size: 8px;
   }
   .navrow a {
     min-height: 40px;
@@ -1143,9 +1193,7 @@ pre {
     padding: 0.65rem;
   }
   .os-window {
-    left: 0.375rem;
-    width: calc(100vw - 0.75rem);
-    max-width: calc(100vw - 0.75rem);
+    margin: 0.5rem 0.4rem 1.5rem;
   }
   #music-player {
     width: calc(100vw - 4rem);
