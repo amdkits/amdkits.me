@@ -1,9 +1,8 @@
-// Renders /library/books/ from /api/goodreads (see functions/api/goodreads.js).
+// Renders /library/books/ from /goodreads.json (built from a Goodreads export; see src/_data/goodreads.js).
 (() => {
   const root = document.querySelector('#bookshelf');
   if (!root) return;
 
-  const API = window.GOODREADS_API || '/api/goodreads';
   const INITIAL = 20; // books shown per shelf before "show all"
 
   const statusEl = root.querySelector('#shelf-status');
@@ -106,18 +105,17 @@
     }
   }
 
-  async function fetchJson(url) {
-    const res = await fetch(url, { headers: { Accept: 'application/json' } });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || data.error) {
-      throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { code: data.error });
+  async function load() {
+    const res = await fetch('/goodreads.json', { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    const count = (k) => data[k]?.length || 0;
+    if (!count('reading') && !count('toRead') && !count('read')) {
+      statusEl.textContent = 'bookshelf not synced yet.';
+      return;
     }
-    return data;
-  }
 
-  const total = (d) => ['reading', 'toRead', 'read'].reduce((n, k) => n + (d[k]?.length || 0), 0);
-
-  function show(data, note) {
     for (const key of ['reading', 'toRead', 'read']) {
       fillShelf(shelvesEl.querySelector(`[data-shelf="${key}"]`), data[key] || [], key);
     }
@@ -126,9 +124,9 @@
     const thisYear = (data.read || []).filter((b) => (b.dateRead || '').startsWith(year)).length;
     summaryEl.replaceChildren(
       ...[
-        [data.read?.length ?? 0, 'read'],
-        [data.reading?.length ?? 0, 'reading'],
-        [data.toRead?.length ?? 0, 'to read'],
+        [count('read'), 'read'],
+        [count('reading'), 'reading'],
+        [count('toRead'), 'to read'],
         [thisYear, `finished in ${year}`]
       ].map(([n, label]) => {
         const span = el('span');
@@ -139,40 +137,11 @@
 
     summaryEl.hidden = false;
     shelvesEl.hidden = false;
-    statusEl.textContent = note || '';
-    statusEl.hidden = !note;
+    statusEl.textContent = data.updated ? `last synced ${data.updated}` : '';
+    statusEl.hidden = !statusEl.textContent;
   }
 
-  async function load() {
-    let liveError;
-    try {
-      const data = await fetchJson(API);
-      show(
-        data,
-        data.errors?.length ? 'some shelves could not be loaded from goodreads; showing what I have.' : ''
-      );
-      return;
-    } catch (err) {
-      liveError = err;
-    }
-
-    // Live feed unavailable: use the snapshot built from a Goodreads export.
-    try {
-      const snapshot = await fetchJson('/goodreads.json');
-      if (total(snapshot) > 0) {
-        show(snapshot, 'goodreads is unreachable right now; showing a saved snapshot.');
-        return;
-      }
-    } catch {
-      /* fall through */
-    }
-    throw liveError;
-  }
-
-  load().catch((err) => {
-    statusEl.textContent =
-      err.code === 'not_configured'
-        ? 'bookshelf not connected yet.'
-        : "couldn't reach goodreads right now. try again in a bit.";
+  load().catch(() => {
+    statusEl.textContent = "couldn't load the bookshelf. try again in a bit.";
   });
 })();

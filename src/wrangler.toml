@@ -1,0 +1,12 @@
+name = "amdkits-me"
+compatibility_date = "2026-10-03"
+pages_build_output_dir = "_site"
+
+# The D1 binding can be added in Cloudflare Pages:
+# Settings -> Bindings -> Add -> D1 database
+# Use the variable name: DB
+# If you prefer Wrangler-managed bindings, uncomment and fill in:
+[[d1_databases]]
+binding = "DB"
+database_name = "kitsweb"
+database_id = "def3935a-72d7-4c22-8872-7f73bb9e392a"
