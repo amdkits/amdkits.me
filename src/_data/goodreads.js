@@ -1,10 +1,8 @@
-// Build-time fallback for /library/books/.
-//
-// If the live /api/goodreads feed is unavailable, the page falls back to
-// /goodreads.json, generated from a Goodreads library export. To refresh it:
+// Data for /library/books/, built from a Goodreads library export
+// (Goodreads' RSS feeds and API no longer work). To refresh it:
 //   Goodreads -> My Books -> Import and export -> Export Library,
-//   then save the downloaded file as src/_data/goodreads_library_export.csv
-//   and rebuild. If the file is missing, the fallback is simply empty.
+//   save the download as src/_data/goodreads_library_export.csv, commit, push.
+// Output is published at /goodreads.json. If the CSV is missing it is empty.
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
@@ -53,7 +51,7 @@ const isoDate = (value) => {
 };
 
 export default function () {
-  const data = { source: 'export', reading: [], toRead: [], read: [] };
+  const data = { updated: new Date().toISOString().slice(0, 10), reading: [], toRead: [], read: [] };
   if (!existsSync(CSV_PATH)) return data;
 
   const text = readFileSync(CSV_PATH, 'utf8').replace(/^﻿/, '');
@@ -67,12 +65,14 @@ export default function () {
     const shelf = shelfFor[get(row, 'Exclusive Shelf')];
     if (!shelf) continue; // custom exclusive shelves such as did-not-finish
     const id = get(row, 'Book Id');
+    // Export values look like ="9780062..."; keep digits only. Covers come from Open Library.
+    const isbn = get(row, 'ISBN13').replace(/\D/g, '') || get(row, 'ISBN').replace(/[^\dXx]/g, '');
     data[shelf].push({
       id,
       title: get(row, 'Title'),
       author: get(row, 'Author'),
       url: id ? `https://www.goodreads.com/book/show/${id}` : '',
-      cover: '',
+      cover: isbn ? `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false` : '',
       rating: Number(get(row, 'My Rating')) || 0,
       dateRead: isoDate(get(row, 'Date Read')),
       dateAdded: isoDate(get(row, 'Date Added'))
