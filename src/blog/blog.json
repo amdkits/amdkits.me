@@ -1,1 +1,1 @@
-{ "layout": "layouts/post.njk" }
+{ "layout": "layouts/post.njk", "tag": "note", "permalink": "/blog/{{ page.fileSlug }}/", "backHref": "/blog/", "backLabel": "← back to blog" }

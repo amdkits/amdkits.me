@@ -5,12 +5,14 @@ permalink: /changelog/
 ---
 <section class='content page-content'>
   <h1>changelog</h1>
-  {% for item in collections.changelog %}
-    <a class='change' href='{{ item.url }}'>
-      <span>{{ item.data.date }}</span>
-      <strong>{{ item.data.title }}</strong>
-    </a>
-  {% else %}
-    <p>nothing changed yet.</p>
-  {% endfor %}
+  <div class='rows'>
+    {% for item in collections.changelog %}
+      <a href='{{ item.url }}'>
+        <span>{{ item.data.date }}</span>
+        <strong>{{ item.data.title }}</strong>
+      </a>
+    {% else %}
+      <p>nothing changed yet.</p>
+    {% endfor %}
+  </div>
 </section>

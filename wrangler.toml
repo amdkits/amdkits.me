@@ -11,3 +11,11 @@ binding = "DB"
 database_name = "kitsweb"
 database_id = "def3935a-72d7-4c22-8872-7f73bb9e392a"
 
+
+# Goodreads shelves for /library/books/ (served by functions/api/goodreads.js).
+# GOODREADS_USER_ID: the number in your profile URL, goodreads.com/user/show/<id>-name
+# GOODREADS_KEY: optional; only needed if the RSS feed asks for a key
+#   (copy the key= value from the RSS link at the bottom of your Goodreads profile).
+[vars]
+GOODREADS_USER_ID = "164173753"
+GOODREADS_KEY = ""

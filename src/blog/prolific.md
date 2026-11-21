@@ -2,8 +2,6 @@
 title: 'prolific testing'
 date: '2026-10-04'
 tag: philosophy
-category: philosophy
-permalink: /philosophy/prolific/
 ---
 
 this is a test for whatever there is on earth and heavens

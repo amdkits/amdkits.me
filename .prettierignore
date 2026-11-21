@@ -2,3 +2,5 @@ node_modules/
 _site/
 .astro/
 .git/
+# Prettier's HTML parser mangles <link>…</link> in feeds
+src/*.xml.njk

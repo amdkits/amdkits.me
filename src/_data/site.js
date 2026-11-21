@@ -3,6 +3,9 @@ export default {
   url: 'https://amdkits.me',
   description: 'a small house on the internet',
 
+  // Your public Goodreads profile URL, e.g. https://www.goodreads.com/user/show/12345678-kits
+  goodreads: 'https://www.goodreads.com/user/show/164173753-kits-av',
+
   nav: [
     ['/', 'home'],
     ['/about/', 'about'],

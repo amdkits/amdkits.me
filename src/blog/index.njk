@@ -3,9 +3,9 @@ layout: layouts/base.njk
 title: blog
 permalink: /blog/
 ---
-<section class='updates page-content'>
+<section class='content page-content'>
   <h1>blog</h1>
-  <ul>
+  <ul class='feed'>
     {% for post in collections.posts %}
       <li>
         <span class='date'>{{ post.data.date }}</span>

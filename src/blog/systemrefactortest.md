@@ -2,8 +2,6 @@
 title: System Refactor Test
 date: '2026-07-01'
 tag: dev
-category: blogs
-permalink: /blogs/systemrefactortest/
 ---
 
 # It works!

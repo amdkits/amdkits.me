@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: bookshelf
+permalink: /library/books/
+---
+<section id='bookshelf' class='content page-content'>
+  <h1>bookshelf</h1>
+  <p>
+    what I'm reading, what I've finished, and what's waiting. pulled live from
+    Goodreads.
+  </p>
+  <p id='shelf-summary' class='shelf-summary' hidden></p>
+  <p id='shelf-status' class='shelf-status'>loading shelves…</p>
+
+  <div id='shelves' hidden>
+    <section class='shelf' data-shelf='reading'>
+      <h2>reading now <small></small></h2>
+      <ul class='book-list'></ul>
+    </section>
+    <section class='shelf' data-shelf='toRead'>
+      <h2>to read <small></small></h2>
+      <ul class='book-list'></ul>
+    </section>
+    <section class='shelf' data-shelf='read'>
+      <h2>read <small></small></h2>
+      <ul class='book-list'></ul>
+    </section>
+  </div>
+
+  <p class='shelf-foot muted'>
+    <a href='/library/'>← library</a>
+    {% if site.goodreads %}
+      ·
+      <a href='{{ site.goodreads }}' rel='me noopener' target='_blank'>goodreads profile</a>
+    {% endif %}
+  </p>
+</section>
+<script src='/books.js' defer></script>

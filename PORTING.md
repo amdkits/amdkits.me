@@ -15,13 +15,13 @@ Build with `npm run build`; output is `_site/`.
 
 ## 2. Where things live
 
-- `src11ty/blog/*.md` → `/blogs/...`
-- `src11ty/garden/*.md` → `/garden/...`
-- `src11ty/videos/*.md` → `/youtube/...`
-- `src11ty/changelog/*.md` → `/changelog/...`
-- `src11ty/_includes/` → layouts/components
-- `src11ty/styles.css` → all site CSS
-- `src11ty/_data/site.js` → navigation, friends, webrings, music
+- `src/blog/*.md` → `/blog/<slug>/`
+- `src/garden/*.md` → `/garden/...`
+- `src/videos/*.md` → `/youtube/...`
+- `src/changelog/*.md` → `/changelog/...`
+- `src/_includes/` → layouts/components
+- `src/styles.css` → all site CSS
+- `src/_data/site.js` → navigation, friends, webrings, music
 
 ## 3. Publishing
 

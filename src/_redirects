@@ -1,0 +1,6 @@
+# Old blog URLs -> /blog/<slug>/ (Cloudflare Pages reads this file)
+/blogs/                         /blog/                          301
+/blogs/boot-sector-notes/       /blog/boot-sector-notes/        301
+/blogs/systemrefactortest/      /blog/systemrefactortest/       301
+/literature/kafkareview/        /blog/kafkareview/              301
+/philosophy/prolific/           /blog/prolific/                 301

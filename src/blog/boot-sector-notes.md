@@ -2,8 +2,6 @@
 title: real mode boot sector notes
 date: '2026-06-20'
 tag: OS
-category: blogs
-permalink: /blogs/boot-sector-notes/
 ---
 
 This is your first real post. Write normal markdown here — headings,
