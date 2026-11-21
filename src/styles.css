@@ -70,11 +70,11 @@ pre {
 /* 3. Layout ------------------------------------------------ */
 .page {
   transform: translate(100px, 200px);
-  width: 620px;
+  width: 640px;
 }
 .box {
   position: relative;
-  max-width: 620px;
+  max-width: 640px;
 }
 .hero {
   display: flex;
@@ -150,8 +150,7 @@ pre {
 .navrow {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.2rem 1rem;
+  gap: 1.2rem;
   padding: 0.4rem 0.8rem;
   border-bottom: 1px solid var(--border);
 }
