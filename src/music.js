@@ -33,15 +33,19 @@
   }
 
   function save() {
-    localStorage.setItem(
-      KEY,
-      JSON.stringify({
-        index,
-        position: audio.currentTime || 0,
-        playing: !audio.paused,
-        muted: audio.muted
-      })
-    );
+    try {
+      localStorage.setItem(
+        KEY,
+        JSON.stringify({
+          index,
+          position: audio.currentTime || 0,
+          playing: !audio.paused,
+          muted: audio.muted
+        })
+      );
+    } catch {
+      /* storage unavailable (private mode, blocked); playback still works */
+    }
   }
 
   function updateButton() {
@@ -61,29 +65,34 @@
     progress.value = (audio.currentTime / audio.duration) * 100;
   }
 
+  let pendingMeta = null; // loadedmetadata handler for the track being loaded
+  let wantPlay = false; // should the current track start playing once ready
+  let failures = 0; // consecutive tracks that failed to load
+
   function loadSong(songIndex, autoplay = false, position = 0) {
     index = (songIndex + list.length) % list.length;
+    wantPlay = autoplay;
 
     const song = list[index];
+
+    // Drop the previous track's handler so it can't fire for this one.
+    if (pendingMeta) audio.removeEventListener('loadedmetadata', pendingMeta);
 
     audio.src = song.src;
     title.textContent = song.title;
 
-    audio.addEventListener(
-      'loadedmetadata',
-      () => {
-        if (position > 0 && position < audio.duration) {
-          audio.currentTime = position;
-        }
+    pendingMeta = () => {
+      if (position > 0 && position < audio.duration) {
+        audio.currentTime = position;
+      }
 
-        if (autoplay) {
-          audio.play().catch(() => {});
-        }
+      if (autoplay) {
+        audio.play().catch(() => {});
+      }
 
-        updateProgress();
-      },
-      { once: true }
-    );
+      updateProgress();
+    };
+    audio.addEventListener('loadedmetadata', pendingMeta, { once: true });
 
     updateButton();
   }
@@ -127,6 +136,18 @@
   });
 
   audio.addEventListener('timeupdate', updateProgress);
+
+  audio.addEventListener('canplay', () => {
+    failures = 0;
+  });
+
+  // Missing or unplayable file: say so, and move on if we were meant to be playing.
+  audio.addEventListener('error', () => {
+    title.textContent = `${list[index].title} (can't load)`;
+    updateButton();
+    failures += 1;
+    if (wantPlay && failures < list.length) loadSong(index + 1, true);
+  });
 
   audio.addEventListener('ended', () => {
     loadSong(index + 1, true);
